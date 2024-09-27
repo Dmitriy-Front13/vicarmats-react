@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap");
+@import 'vars';
+@import 'reset';
+@import 'custom';
+@import 'icons';
+@import 'animation';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  color: $dark;
+}
+
+.container {
+  max-width: 80rem;
+  padding: 0 1rem;
+  margin-inline: auto;
+}
+.logo img {
+  max-width: 10rem;
+}
+.section {
+  padding: 5rem 0 3rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.sub-title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.text {
+  font-size: 1rem
+}
+
+.text-line-through {
+  text-decoration: line-through;
+  font-size: .875rem
+}
+
+.section {
+  padding: 5rem 0 3rem;
+
+  &__title {
+    color: $dark;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+
+    &:has(+ .section__sub-title) {
+      margin-bottom: 0.75rem;
+    }
+
+    span {
+      color: $primary;
+    }
+  }
+
+  &__sub-title {
+    text-align: center;
+    color: $dark-grey;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.button {
+  display: flex;
+  margin: 0 auto;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background-color: $primary;
+  border-radius: 0.25rem;
+  border: 2px solid $primary;
+  transition: 0.3s ease background-color;
+  padding: 0.625rem 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.15;
+
+  &:focus-within,
+  &:focus,
+  &:active {
+    outline: 2px solid $primary-300;
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    background-color: $primary-300;
+    cursor: pointer;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: .125rem
+}
+
+textarea {
+  resize: vertical
+}
