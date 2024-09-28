@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import aboutProduct from '../../assets/images/howWeWork/about_product.jpg';
 import aboutUs from '../../assets/images/howWeWork/about_us.jpg';
 import delivery from '../../assets/images/howWeWork/delivery.jpg';
@@ -18,14 +20,13 @@ const HowWeWork = () => {
         <div className="how-we-work__items">
           {items.map((item, index) => (
             <div className="how-we-work__item" key={index}>
-              <a className="how-we-work__link"
-                style={{ backgroundImage: `url(${item.images})` }}
-                href={item.link}>
+              <Link to={item.link} className="how-we-work__link"
+                style={{ backgroundImage: `url(${item.images})` }}>
                 <div className="how-we-work__link-items">
                   <h4 className="how-we-work__link-title">{item.title}</h4>
                   <span>More {'>'}</span>
                 </div>
-              </a>
+              </Link>
             </div>
           ))}
         </div>

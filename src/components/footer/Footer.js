@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/images/logoSVG.svg';
 
@@ -7,9 +8,9 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <a href="/" aria-label="Custom EVA mats for the interior of your car" className="logo">
+        <Link to="/" aria-label="Custom EVA mats for the interior of your car" className="logo">
           <img src={logo} alt="Evacode logo" />
-        </a>
+        </Link>
         <div className="footer__social">
           <a aria-label="Custom EVA mats facebook"
             href="https://www.facebook.com/people/VI-CarMats/61556124253098/?mibextid=sCpJLy"

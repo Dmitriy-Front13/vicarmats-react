@@ -9,7 +9,7 @@ import WorkExamples from '../components/workExamples/WorkExamples';
 
 const MainPage = () => {
   return (
-    <>
+    <main>
       <Hero/>
       <Advantages/>
       <GetGift/>
@@ -17,7 +17,7 @@ const MainPage = () => {
       <Reviews/>
       <HowWeWork/>
       <Feedback/>
-    </>
+    </main>
   )
 }
 
