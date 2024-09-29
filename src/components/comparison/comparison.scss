@@ -50,8 +50,6 @@
 
 @media (max-width:1150px) {
   .card-comparison--highlighted {
-    -webkit-box-ordinal-group: 4;
-    -ms-flex-order: 3;
     order: 3
   }
 }

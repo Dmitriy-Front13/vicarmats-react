@@ -150,13 +150,16 @@
   .more {
     grid-row: 1 / span 2;
     grid-column: 1 / span 1;
+
     &__text {
       text-align: left
     }
+
     &__title {
       text-align: left;
       max-width: 270px
     }
+
     &::after,
     &::before {
       content: none;
@@ -178,10 +181,12 @@
   .withstand {
     grid-row: 3 / span 2;
     grid-column: 1 / span 1;
+
     &__title {
       text-align: left;
       max-width: 350px
     }
+
     &__text {
       text-align: left;
     }
@@ -202,6 +207,154 @@
 
   .individual__title {
     max-width: 350px
+  }
+
+}
+
+@media (max-width:760px) {
+  .features {
+    &__items {
+      grid-template-rows: repeat(5, 320px);
+      column-gap: 25px;
+    }
+
+    &__item-img {
+      height: 50%
+    }
+
+    &__title {
+      font-size: 40px
+    }
+
+    &__item-title {
+      font-size: 27px;
+      line-height: 28px
+    }
+
+    &__item-text {
+      font-size: 18px;
+      width: 280px
+    }
+  }
+
+
+  .more__title {
+    font-size: 28px
+  }
+
+  .more__text {
+    font-size: 18px;
+    width: 280px
+  }
+
+  .withstand__title {
+    max-width: 320px
+  }
+}
+
+@media (max-width:630px) {
+  .features {
+    &__items {
+      grid-template-rows: repeat(5, 300px);
+      column-gap: 20px;
+    }
+
+    &__item-img {
+      width: 240px;
+      height: 40%;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__item-title {
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    &__item-text {
+      font-size: 14px;
+      width: 210px;
+    }
+  }
+
+  .more__title {
+    font-size: 24px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width:550px) {
+  .features {
+    &__item-img {
+      width: 200px;
+      height: 30%;
+    }
+    &__title {
+      font-size: 28px;
+    }
+    &__item-title {
+      font-size: 18px;
+      line-height: 18px;
+      max-width: 170px;
+    }
+    &__item-text {
+      font-size: 12px;
+      width: 180px;
+      line-height: 16px;
+    }
+  }
+
+}
+
+@media (max-width:440px) {
+  .features {
+    &__items {
+      grid-template-rows: repeat(5, 200px);
+      column-gap: 10px;
+    }
+    &__item-img {
+      width: 150px;
+      height: 35%;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__item-title {
+      font-size: 16px;
+      line-height: 16px;
+      max-width: 150px;
+    }
+    &__item-text {
+      font-size: 12px;
+      width: 160px;
+    }
+  }
+}
+
+@media (max-width:380px) {
+  .features {
+    &__items {
+      grid-template-rows: repeat(5, 150px);
+      column-gap: 5px;
+    }
+    &__item-img {
+      width: 140px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__item-title {
+      font-size: 14px;
+      line-height: 14px;
+      max-width: 140px;
+    }
+    &__item-text {
+      font-size: 10px;
+      line-height: 12px;
+      width: 140px;
+    }
   }
 
 }

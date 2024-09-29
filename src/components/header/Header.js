@@ -1,49 +1,60 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/images/logoSVG.svg';
+import burgerBtn from '../../assets/images/burgerBtn.svg';
+
 
 import './header.scss'
+import HeaderSidebar from '../headerSidebar/HeaderSidebar';
 
 const Header = () => {
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() =>  setMenuOpen(false), [pathname]);
 
   const isMainPage = pathname === '/';
-  
+
   return (
-    <header className={isMainPage ? 'header header--main' : 'header'}>
-      <div className="container">
-        <div className="header__inner">
-          <Link to="/" aria-label="Custom EVA mats for the interior of your car" className="header__logo logo">
-            <img src={logo} alt="Evacode logo" />
-          </Link>
-          <nav className="header__nav">
-            <ul className="header__nav-list">
-              <li className="header__nav-item">
-                <Link to="/" className="header__nav-link">Home</Link>
-              </li>
-              <li className="header__nav-item">
-                <Link to="/about-product" className="header__nav-link">What is Eva?</Link>
-              </li>
-              <li className="header__nav-item">
-                <Link to="/#feedback" className="header__nav-link">Price</Link>
-              </li>
-              <li className="header__nav-item">
-                <Link to="/warranty" className="header__nav-link">Warranty</Link>
-              </li>
-              <li className="header__nav-item">
-                <Link to="/delivery" className="header__nav-link">Delivery</Link>
-              </li>
-              <li className="header__nav-item">
-                <Link to="/about-us" className="header__nav-link">About us</Link>
-              </li>
-            </ul>
-            <SocialList isMainPage={isMainPage} />
-          </nav>
-          <img className="burger-btn" src="static/images/burgerBtn.svg" alt="" />
+    <>
+      <header className={isMainPage ? 'header header--main' : 'header'}>
+        <div className="container">
+          <div className="header__inner">
+            <Link to="/" aria-label="Custom EVA mats for the interior of your car" className="header__logo logo">
+              <img src={logo} alt="Evacode logo" />
+            </Link>
+            <nav className="header__nav">
+              <ul className="header__nav-list">
+                <li className="header__nav-item">
+                  <Link to="/" className="header__nav-link">Home</Link>
+                </li>
+                <li className="header__nav-item">
+                  <Link to="/about-product" className="header__nav-link">What is Eva?</Link>
+                </li>
+                <li className="header__nav-item">
+                  <Link to="/#feedback" className="header__nav-link">Price</Link>
+                </li>
+                <li className="header__nav-item">
+                  <Link to="/warranty" className="header__nav-link">Warranty</Link>
+                </li>
+                <li className="header__nav-item">
+                  <Link to="/delivery" className="header__nav-link">Delivery</Link>
+                </li>
+                <li className="header__nav-item">
+                  <Link to="/about-us" className="header__nav-link">About us</Link>
+                </li>
+              </ul>
+              <SocialList isMainPage={isMainPage} />
+            </nav>
+            <img className="burger-btn"
+             src={burgerBtn} 
+             alt="burger button" 
+             onClick={() => setMenuOpen(true)}/>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <HeaderSidebar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+    </>
   )
 }
 

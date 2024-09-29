@@ -56,3 +56,14 @@
   }
 
 }
+
+@media (max-width:760px) {
+  .faq {
+    padding: 30px 0;
+
+    &__title {
+      padding-bottom: 30px
+    }
+  }
+
+}

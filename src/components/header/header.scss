@@ -164,3 +164,45 @@
 .burger-btn {
   display: none;
 }
+
+@media (max-width:1180px) {
+
+  .header {
+    &__nav-list {
+      padding: 0 .5rem;
+    }
+    &__nav-link {
+      font-size: 1.25rem;
+    }
+  }
+
+  .social-btn {
+    font-size: 1rem
+  }
+}
+
+@media (max-width:980px) {
+  .burger-btn {
+    cursor: pointer;
+    display: block;
+    width: 30px
+  }
+
+  .header__nav {
+    display: none
+  }
+}
+
+@media (max-width:480px) {
+  .header {
+    padding: 2rem 1rem;
+
+    &__logo img {
+      max-width: 8rem
+    }
+  }
+
+  .burger-btn {
+    width: 20px
+  }
+}
