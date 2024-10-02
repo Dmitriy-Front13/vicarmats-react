@@ -18,7 +18,6 @@
 
 .modal-overlay {
   overflow-y: scroll;
-  // padding-top: 8vh;
   position: fixed;
   top: 0;
   right: 0;
@@ -57,6 +56,13 @@
     width: 100%;
     margin: 0 auto;
   }
+  &__image--gift {
+    margin: auto 0;
+    padding: 40px;
+    img {
+      transform: rotate(30deg)
+    }
+  }
 
   &__text {
     margin-bottom: 1rem;
@@ -65,15 +71,6 @@
   &__items {
     display: flex;
     gap: 20px;
-
-    .modal__image {
-      margin: auto 0;
-      padding: 30px;
-
-      img {
-        transform: rotate(30deg)
-      }
-    }
   }
 
   &__close {

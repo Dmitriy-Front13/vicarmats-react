@@ -11,8 +11,8 @@ const HowWeWork = () => {
   const items = [
     { title: 'About the product', images: aboutProduct, link: 'about-product' },
     { title: 'About us', images: aboutUs, link: 'about-us' },
-    { title: 'Warranty and refund', images: delivery, link: 'warranty' },
-    { title: 'Delivery', images: warranty, link: 'delivery' }
+    { title: 'Warranty and refund', images: warranty, link: 'warranty' },
+    { title: 'Delivery', images: delivery, link: 'delivery' }
   ];
   return (
     <section className="how-we-work section">

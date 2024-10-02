@@ -32,7 +32,7 @@ const Header = () => {
                   <Link to="/about-product" className="header__nav-link">What is Eva?</Link>
                 </li>
                 <li className="header__nav-item">
-                  <Link to="/#feedback" className="header__nav-link">Price</Link>
+                  <Link to="/#price-constructor" className="header__nav-link">Price</Link>
                 </li>
                 <li className="header__nav-item">
                   <Link to="/warranty" className="header__nav-link">Warranty</Link>

@@ -1,11 +1,9 @@
 import { useTimer } from 'react-timer-hook';
-import Modal from 'react-modal';
-import { useState } from 'react';
-import GetGiftModal from '../modals/GetGiftModal';
-
+import { useDispatch } from 'react-redux';
+import { openModal } from '../modals/modalSlice';
 import './getGift.scss';
 
-
+import footrest from '../../assets/images/footrest.png';
 
 function getEndOfMonth() {
   const now = new Date();
@@ -53,7 +51,20 @@ const Timer = () => {
 }
 
 const GetGift = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const handleOpenModal = () => {
+    dispatch(openModal({
+      modalData: {
+        title: 'Footrest',
+        description: true,
+        image: footrest,
+        items: ['size 25x16 cm', 'thickness of 3 mm', 'anti-slip rubber inserts', 'set mounts - 4pcs', 'warranty 6 months'],
+        oldPrice: '15',
+        price: '0',
+        isGift: true,
+      }
+    }));
+  };
   return (
     <section className="get-gift section">
       <div className="get-gift__inner">
@@ -62,27 +73,10 @@ const GetGift = () => {
         </h2>
         <p className="get-gift__text">Buy now our product and get a complimentary heel pad</p>
         <button className="get-gift__button"
-          onClick={() => setModalOpen(true)}>
+          onClick={handleOpenModal}>
           Get gift
         </button>
       </div>
-
-      <Modal
-        isOpen={modalOpen}
-        onRequestClose={() => setModalOpen(false)}
-        className="modal"
-        overlayClassName="modal-overlay"
-        overlayElement={
-          (props, contentElement) => <div {...props}>
-            <button className="modal__close">
-              <span className='modal__closeIcon'>
-                <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M.3 9.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3L5 6.4l3.3 3.3c.2.2.5.3.7.3.2 0 .5-.1.7-.3.4-.4.4-1 0-1.4L6.4 5l3.3-3.3c.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0L5 3.6 1.7.3C1.3-.1.7-.1.3.3c-.4.4-.4 1 0 1.4L3.6 5 .3 8.3c-.4.4-.4 1 0 1.4z" fill="#fff" fill-rule="nonzero"></path></svg>
-              </span>
-            </button>
-            {contentElement}
-            </div>}>
-        <GetGiftModal />
-      </Modal>
     </section>
   )
 }
