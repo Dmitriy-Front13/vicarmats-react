@@ -22,9 +22,14 @@ const PriceConstructor = () => {
 
   const completeStep = (step) => {
     const newCompletedSteps = [...completedSteps];
-    newCompletedSteps[step - 1] = true;
+    if (step === 2) {
+      newCompletedSteps[1] = true; 
+      newCompletedSteps[2] = true; 
+    } else {
+      newCompletedSteps[step - 1] = true;
+    }
     setCompletedSteps(newCompletedSteps);
-    setCurrentStep(step + 1); 
+    setCurrentStep(step + 1);
   };
 
   useEffect(() => {
