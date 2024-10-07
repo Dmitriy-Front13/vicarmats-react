@@ -1,0 +1,81 @@
+.order__payment {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .25);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  gap: 10px
+}
+
+.order__payment-inner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%
+}
+
+.order__payment-inner input {
+  width: 24px;
+  height: 100%;
+  border-radius: 50%;
+  border: #999 2px solid
+}
+
+.order__payment-inner label {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  cursor: none
+}
+
+.order__payment-text {
+  font-size: 24px;
+  width: 100%
+}
+
+.modalBuy__form-submit {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 32px;
+  color: #fff;
+  margin-top: 20px;
+  margin-right: 18px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .25);
+  background: linear-gradient(184deg, #429600 0%, #59ca00 100%);
+  border: none;
+  border-radius: 41px;
+  max-width: 400px;
+  width: 100%;
+  height: 75px;
+  padding: 0
+}
+
+.modalBuy__form-submit:hover {
+  box-shadow: inset 3px 4px 6px 1px rgba(54, 12, 0, .25)
+}
+
+.modalBuy__form-group-textarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px
+}
+
+.modalBuy__form-textarea {
+  border: 1px solid #000;
+  border-radius: 10px;
+  height: 129px;
+  resize: none
+}
+
+.modalBuy__form-input {
+  border: 1px solid #000;
+  width: 100%;
+  height: 56px
+}

@@ -1,0 +1,50 @@
+.order-summary {
+  margin: 2rem 0;
+  padding: 15px;
+  border: 1px solid #000;
+  border-radius: 23px;
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &__title {}
+
+  &__title-arrow {
+    margin-left: 5px;
+  }
+
+  &__inner {
+    border-top: 1px solid #000;
+    margin-top: 5px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      height: 200px ;
+      aspect-ratio: 1 / 1;
+    }
+  }
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #000;
+  }
+  &__price {
+    font-weight: bold;
+  }
+}

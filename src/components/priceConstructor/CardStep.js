@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 import { openModal } from '../modals/modalSlice';
-
+import { updateSet, updatePrice } from "./priceConstructorSlice";
 import footrest from '../../assets/images/footrest.png';
 
-const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, setValue, firstProperty }) => {
+import { Link } from "react-router-dom";
+
+const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, firstProperty }) => {
   const dispatch = useDispatch();
   const openModalMore = () => {
     dispatch(openModal({
@@ -43,8 +45,8 @@ const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, setVal
         <a aria-label="See more about the special gift"
           className="card-step__accessory-info"
           onClick={(e) => {
-            e.stopPropagation(); 
-            openModalGift(); 
+            e.stopPropagation();
+            openModalGift();
           }}>
           <i className="icon-present"></i>
           &nbsp;Special gift
@@ -53,9 +55,14 @@ const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, setVal
           Total <span className="text-line-through">{originalPrice}$</span> <sum>{totalPrice}</sum>$
         </p>
       </div>
-      <button className="button card-step__button" type="submit" name="setType" value={setValue}>
+      <Link to="/order" className="button card-step__button"
+        onClick={(e) => { 
+          e.stopPropagation();
+          dispatch(updateSet(title));
+          dispatch(updatePrice(totalPrice)) 
+          }}>
         Select set
-      </button>
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import Select from 'react-select';
-
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateCarpetColor, updateCarpetTrim } from './priceConstructorSlice';
 
 const carpetColorItems = [
   { value: 'black', label: 'Black' },
@@ -27,11 +27,13 @@ const trimColorItems = [
 ];
 
 const ColorForm = ({ onNext }) => {
-  const [carpetColor, setCarpetColor] = useState(null);
-  const [trimColor, setTrimColor] = useState(null);
+  const dispatch = useDispatch();
+  const carpetColor = useSelector((state) => state.priceConstructor.carpetColor);
+  const carpetTrim = useSelector((state) => state.priceConstructor.carpetTrim);
+
   const getImageSrc = () => {
     try {
-      return require(`../../assets/images/priceConstructor/color-combinations/${carpetColor}-${trimColor}.jpg`);
+      return require(`../../assets/images/priceConstructor/color-combinations/${!carpetColor ? 'beige' : carpetColor}-${!carpetTrim ? 'beige' : carpetTrim}.jpg`);
     } catch (error) {
       return require('../../assets/images/priceConstructor/color-combinations/beige-beige.jpg');
     };
@@ -49,7 +51,7 @@ const ColorForm = ({ onNext }) => {
         <div className="constructor-step__field form-field">
           <Select
             options={carpetColorItems}
-            onChange={(option) => setCarpetColor(option.value)}
+            onChange={(option) => dispatch(updateCarpetColor(option.value))}
             value={carpetColorItems.find(item => item.value === carpetColor)}
             blurInputOnSelect={true}
             aria-label='Carpet color'
@@ -61,8 +63,8 @@ const ColorForm = ({ onNext }) => {
         <div className="constructor-step__field form-field">
           <Select
             options={trimColorItems}
-            onChange={(option) => setTrimColor(option.value)}
-            value={trimColorItems.find(item => item.value === trimColor)}
+            onChange={(option) => dispatch(updateCarpetTrim(option.value))}
+            value={trimColorItems.find(item => item.value === carpetTrim)}
             blurInputOnSelect={true}
             aria-label='Carpet color'
             placeholder='Carpet color'

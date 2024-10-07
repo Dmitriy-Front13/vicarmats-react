@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCarMake, updateCarModel, updateCarYear } from './priceConstructorSlice';
 import axios from 'axios';
 import Select from 'react-select';
 import step1 from '../../assets/images/priceConstructor/step-1.jpg';
@@ -77,12 +79,15 @@ const carYearsOptions = generateCarYears();
 
 const CarMakeForm = ({ onNext }) => {
   const [models, setModels] = useState([]);
-  const [selectedMake, setSelectedMake] = useState(null);
-  const [selectedModel, setSelectedModel] = useState(null);
-  const [selectedYear, setSelectedYear] = useState(null);
+  const dispatch = useDispatch();
+  const carMake = useSelector((state) => state.priceConstructor.carMake);
+  const carModel = useSelector((state) => state.priceConstructor.carModel);
+  const carYear = useSelector((state) => state.priceConstructor.carYear);
+
   const handleMakeChange = async (selectedOption) => {
-    setSelectedMake(selectedOption);
-    setSelectedModel(null);
+    dispatch(updateCarMake(selectedOption));
+    dispatch(updateCarModel(''));
+
 
     const apiUrl = `https://api.auto.ria.com/categories/1/marks/${selectedOption.value}/models`;
     try {
@@ -97,6 +102,13 @@ const CarMakeForm = ({ onNext }) => {
       console.error('Ошибка при загрузке моделей:', error);
     }
   };
+  const handleModelChange = (selectedOption) => {
+    dispatch(updateCarModel(selectedOption)); 
+  };
+
+  const handleYearChange = (selectedOption) => {
+    dispatch(updateCarYear(selectedOption)); 
+  };
   return (
     <form className={'price-constructor__step price-constructor__step--active constructor-step'} onSubmit={onNext}>
       <h3 className="constructor-step__title">Find your car from the list below</h3>
@@ -109,7 +121,7 @@ const CarMakeForm = ({ onNext }) => {
           <Select
             options={carOptions}
             onChange={handleMakeChange}
-            value={selectedMake}
+            value={carMake}
             blurInputOnSelect={true}
             aria-label='Car make'
             placeholder='Car make'
@@ -119,12 +131,10 @@ const CarMakeForm = ({ onNext }) => {
         </div>
         <div className="constructor-step__field form-field">
           <Select
-            options={selectedMake ? models : [{ value: '', label: 'Please select car make', isDisabled: true }]}
-            onChange={(selectedOption) => {
-              setSelectedModel(selectedOption);
-            }}
+            options={carMake ? models : [{ value: '', label: 'Please select car make', isDisabled: true }]}
+            onChange={handleModelChange}
             blurInputOnSelect={true}
-            value={selectedModel}
+            value={carModel}
             aria-label='Car model'
             placeholder='Car model'
             classNamePrefix="car-make"
@@ -137,8 +147,8 @@ const CarMakeForm = ({ onNext }) => {
         <div className="constructor-step__field form-field">
           <Select
             options={carYearsOptions}
-            onChange={(selectedOption) => setSelectedYear(selectedOption)}
-            value={selectedYear}
+            onChange={handleYearChange}
+            value={carYear}
             blurInputOnSelect={true}
             aria-label='Car year'
             placeholder='Car year'

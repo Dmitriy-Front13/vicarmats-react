@@ -7,6 +7,8 @@ import Delivery from '../../pages/Delivery';
 import Warranty from '../../pages/Warranty';
 import AboutUs from '../../pages/AboutUs';
 import AboutProduct from '../../pages/AboutProduct';
+import OrderPage from '../../pages/Order';
+import Checkout from '../../pages/Checkout';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path='/warranty' element={<Warranty />}/>
         <Route path='/delivery' element={<Delivery />}/>
         <Route path='/about-us' element={<AboutUs />}/>
+        <Route path='/order' element={<OrderPage/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
       <Footer/>
     </Router>

@@ -14,7 +14,6 @@ const SetForm = () => {
         imageUrl={set1}
         totalPrice="59"
         originalPrice="100"
-        setValue="economy"
         firstProperty="Front or rear"
       />
       <CardStep
@@ -23,7 +22,6 @@ const SetForm = () => {
         imageUrl={set2}
         totalPrice="119"
         originalPrice="140"
-        setValue="standart"
         firstProperty="Front and rear"
       />
       <CardStep
@@ -32,7 +30,6 @@ const SetForm = () => {
         imageUrl={set3}
         totalPrice="199"
         originalPrice="220"
-        setValue="premium"
         firstProperty="Front and rear + trunk mat"
       />
     </form>

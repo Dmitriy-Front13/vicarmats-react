@@ -11,7 +11,7 @@ import SetForm from './SetForm';
 const PriceConstructor = () => {
   const { hash } = useLocation();
   const ref = useRef(null);
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState([false, false, false]);
 
   const handleStepChange = (step) => {
@@ -22,15 +22,11 @@ const PriceConstructor = () => {
 
   const completeStep = (step) => {
     const newCompletedSteps = [...completedSteps];
-    if (step === 2) {
-      newCompletedSteps[1] = true; 
-      newCompletedSteps[2] = true; 
-    } else {
-      newCompletedSteps[step - 1] = true;
-    }
+    newCompletedSteps[step] = true; 
     setCompletedSteps(newCompletedSteps);
-    setCurrentStep(step + 1);
+    setCurrentStep(step + 1); 
   };
+
 
   useEffect(() => {
     if (hash) {
@@ -48,9 +44,9 @@ const PriceConstructor = () => {
           <StepNavigation currentStep={currentStep} onStepChange={handleStepChange} completedSteps={completedSteps} />
 
           <div id="price-constructor-form" className="price-constructor__form">
-            {currentStep === 1 && <CarMakeForm onNext={() => completeStep(1)} />}
-            {currentStep === 2 && <ColorForm onNext={() => completeStep(2)} />}
-            {currentStep === 3 && <SetForm />}
+            {currentStep === 0 && <CarMakeForm onNext={() => completeStep(0)} />}
+            {currentStep === 1 && <ColorForm onNext={() => completeStep(1)} />}
+            {currentStep === 2 && <SetForm />}
           </div>
         </div>
       </div>
