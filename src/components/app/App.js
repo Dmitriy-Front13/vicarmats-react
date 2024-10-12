@@ -4,9 +4,9 @@ import { Suspense, lazy } from 'react';
 
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
+import MainPage from '../../pages/MainPage';
 
 
-const MainPage = lazy(() => import('../../pages/MainPage'));
 const DeliveryPage = lazy(() => import('../../pages/Delivery'));
 const WarrantyPage = lazy(() => import('../../pages/Warranty'));
 const AboutUsPage = lazy(() => import('../../pages/AboutUs'));
