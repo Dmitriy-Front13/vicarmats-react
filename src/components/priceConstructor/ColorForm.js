@@ -31,6 +31,7 @@ const ColorForm = ({ onNext }) => {
   const carpetColor = useSelector((state) => state.priceConstructor.carpetColor);
   const carpetTrim = useSelector((state) => state.priceConstructor.carpetTrim);
 
+
   const getImageSrc = () => {
     try {
       return require(`../../assets/images/priceConstructor/color-combinations/${!carpetColor ? 'beige' : carpetColor}-${!carpetTrim ? 'beige' : carpetTrim}.jpg`);
@@ -51,12 +52,15 @@ const ColorForm = ({ onNext }) => {
         <div className="constructor-step__field form-field">
           <Select
             options={carpetColorItems}
-            onChange={(option) => dispatch(updateCarpetColor(option.value))}
-            value={carpetColorItems.find(item => item.value === carpetColor)}
+            onChange={(option) => {
+              dispatch(updateCarpetColor(option.value));
+            }}
+            value={carpetColorItems.find((item) => item.value === carpetColor)}
             blurInputOnSelect={true}
-            aria-label='Carpet color'
-            placeholder='Carpet color'
+            aria-label="Carpet color"
+            placeholder="Carpet color"
             classNamePrefix="car-make"
+            maxMenuHeight={210}
             required
           />
         </div>
@@ -69,6 +73,7 @@ const ColorForm = ({ onNext }) => {
             aria-label='Carpet color'
             placeholder='Carpet color'
             classNamePrefix="car-make"
+            maxMenuHeight={210}
             required
           />
         </div>

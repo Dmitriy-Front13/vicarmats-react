@@ -66,14 +66,10 @@
   }
 
   &__mobile-nav {
-    display: none;
     text-align: center;
     flex: 0 1 20rem;
   }
 
-  &__mobile-nav--active {
-    display: block;
-  }
 
   &__step {
     display: none;
@@ -270,6 +266,27 @@
     left: 0;
     right: 0;
     margin: 4px auto 0 !important;
+    animation: open .2s cubic-bezier(0.5, 0, 0, 1.25);
+    &::after {
+      content: "";
+      border-bottom: 4px solid #999;
+      border-right: 4px solid #999;
+      display: block;
+      height: 20px;
+      margin-top: -4px;
+      pointer-events: none;
+      position: absolute;
+      right: 50%;
+      bottom: 10px;
+      transform-origin: 66% 66%;
+      transform: rotate(45deg);
+      width: 20px;
+    }
+  }
+
+  &__menu-list {
+    position: relative;
+    margin: 1em 0;
   }
 
   &__option {
@@ -296,4 +313,14 @@
   font-weight: bold;
   color: inherit !important;
   text-align: center;
+}
+
+@keyframes open {
+  0% {
+    transform: scale(.75) translateY(19px);
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+  }
 }

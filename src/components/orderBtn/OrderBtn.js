@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const OrderBtn = () => {
+  const navigate = useNavigate();
   const isShipping = useSelector((state) => state.priceConstructor.shipping.postalCode);
   return (
-    <Link to="/checkout" className="modalBuy__form-submit" disabled={isShipping}>Continue to checkout</Link>
+    <button
+      className="order__btn"
+      disabled={!isShipping}
+      onClick={() => navigate('/checkout')}>Continue to checkout</button>
   )
 }
 

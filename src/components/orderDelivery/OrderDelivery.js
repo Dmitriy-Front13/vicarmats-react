@@ -35,34 +35,30 @@ const OrderDelivery = () => {
     reset();
   };
   return (
-    <div className="container">
-      <form className="order__total-item--promo" onSubmit={handleSubmit(onSubmit)}>
-        <div className="promo__inputs">
-          <label className="modalBuy__form-label">Calculate delivery</label>
-          <input
-            className="modalBuy__form-input"
-            type="text"
-            placeholder="Postal code"
-            disabled={isShipping}
-            {...register('postalCode', {
-              required: 'Postal code is required',
-              pattern: {
-                value: /^[A-Z]\d[A-Z]\s?\d[A-Z]\d$/,
-                message: 'Invalid postal code format',
-              },
-            })} />
-        </div>
-        {errors.postalCode && (
-          <p className="promoInvalid">{errors.postalCode.message}</p>
-        )}
-        <button
-          type="submit"
-          className="promo__btn"
-          disabled={isShipping}>
-          Calculate delivery
-        </button>
-      </form>
-    </div>
+    <form className="order-promo order-delivery" onSubmit={handleSubmit(onSubmit)}>
+      <label className="order-promo__label">To provide an accurate shipping cost, please enter your postal code. This information is used solely for calculating your delivery charges.</label>
+      <input
+        className="order-promo__input"
+        type="text"
+        placeholder="Postal code"
+        disabled={isShipping}
+        {...register('postalCode', {
+          required: 'Postal code is required',
+          pattern: {
+            value: /^[A-Z]\d[A-Z]\s?\d[A-Z]\d$/,
+            message: 'Invalid postal code format',
+          },
+        })} />
+      {errors.postalCode && (
+        <p className="promoInvalid">{errors.postalCode.message}</p>
+      )}
+      <button
+        type="submit"
+        className="order-promo__btn"
+        disabled={isShipping}>
+        Calculate delivery
+      </button>
+    </form>
   )
 }
 

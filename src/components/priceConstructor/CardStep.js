@@ -59,7 +59,10 @@ const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, firstP
         onClick={(e) => { 
           e.stopPropagation();
           dispatch(updateSet(title));
-          dispatch(updatePrice(totalPrice)) 
+          dispatch(updatePrice({
+            product: totalPrice,
+            subtotal: totalPrice
+          })) 
           }}>
         Select set
       </Link>

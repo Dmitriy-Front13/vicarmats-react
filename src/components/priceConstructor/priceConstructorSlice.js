@@ -8,13 +8,18 @@ const initialState = {
   carpetColor: '',
   carpetTrim: '',
   set: '',
-  price: '',
+  price: {
+    product: '',
+    subtotal: '',
+    total: ''
+  },
   shipping: {
     postalCode: '',
     shippingPrice: 0
   },
   promo: {
     usePromo: false,
+    discount: 0,
     promoValue: ''
   },
 }
@@ -42,7 +47,7 @@ const priceConstructorSlice = createSlice({
       state.set = action.payload;
     },
     updatePrice: (state, action) => {
-      state.price = action.payload;
+      state.price = { ...state.price, ...action.payload };
     },
     updatePromo: (state, action) => {
       state.promo = { ...state.promo, ...action.payload };

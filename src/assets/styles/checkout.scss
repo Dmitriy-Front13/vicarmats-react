@@ -1,0 +1,14 @@
+.checkout {
+  padding: 35px 0;
+  &__title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+  &__sub-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+  }
+}

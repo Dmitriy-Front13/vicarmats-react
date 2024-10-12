@@ -18,7 +18,7 @@ const OrderSummary = () => {
   const set = useSelector((state) => state.priceConstructor.set);
   const carpetColor = useSelector((state) => state.priceConstructor.carpetColor);
   const carpetTrim = useSelector((state) => state.priceConstructor.carpetTrim);
-  const price = useSelector((state) => state.priceConstructor.price)
+  const price = useSelector((state) => state.priceConstructor.price.product)
 
   const getImageSrc = () => {
     switch (set) {
@@ -33,45 +33,45 @@ const OrderSummary = () => {
     }
   };
   return (
-    <div className="container">
-      <div className="order-summary">
-        <div className="order-summary__box" onClick={() => setIsOpen(!isOpen)}>
-          <p className="order-summary__title">
-            Show order summary
-            <svg className='order-summary__title-arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" clipRule="evenodd" d="M0 1.40051L5.96734 7.00272L6.00006 6.97063L6.031 7.00097L12 1.40051L10.5718 0.000421405L5.99867 4.2912L1.42778 0L0 1.40051Z" fill="black" />
-            </svg>
-          </p>
-          <span className="order-summary__price">{price}$</span>
-        </div>
-        <animated.div style={animation} ref={contentRef} >
-          <div className="order-summary__inner">
-            <img src={getImageSrc()} alt="" />
-            <ul className="order-summary__list">
-              <li className="order-summary__item">
-                Car make
-                <span className="order-summary__item-info">{carMake}</span>
-              </li>
-              <li className="order-summary__item">
-                Car model
-                <span className="order-summary__item-info">{carModel}</span>
-              </li>
-              <li className="order-summary__item">
-                Car year
-                <span className="order-summary__item-info">{carYear}</span>
-              </li>
-              <li className="order-summary__item">
-                Carpet color
-                <span className="order-summary__item-info">{carpetColor}</span>
-              </li>
-              <li className="order-summary__item">
-                Carpet trim
-                <span className="order-summary__item-info">{carpetTrim}</span>
-              </li>
-            </ul>
-          </div>
-        </animated.div>
+    <div className="order-summary">
+      <div className="order-summary__box" onClick={() => setIsOpen(!isOpen)}>
+        <p className="order-summary__title">
+          View order details
+          <svg className='order-summary__title-arrow' width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M0 1.40051L5.96734 7.00272L6.00006 6.97063L6.031 7.00097L12 1.40051L10.5718 0.000421405L5.99867 4.2912L1.42778 0L0 1.40051Z" fill="black" />
+          </svg>
+        </p>
+        <span className="order-summary__price">{price}$</span>
       </div>
+      <animated.div style={animation} ref={contentRef} >
+        <div className="order-summary__inner">
+          <div className="order-summary__img-box">
+            <img src={getImageSrc()} alt="img set" />
+          </div>
+          <ul className="order-summary__list">
+            <li className="order-summary__item">
+              Car make
+              <span className="order-summary__item-info">{carMake}</span>
+            </li>
+            <li className="order-summary__item">
+              Car model
+              <span className="order-summary__item-info">{carModel}</span>
+            </li>
+            <li className="order-summary__item">
+              Car year
+              <span className="order-summary__item-info">{carYear}</span>
+            </li>
+            <li className="order-summary__item">
+              Carpet color
+              <span className="order-summary__item-info">{carpetColor}</span>
+            </li>
+            <li className="order-summary__item">
+              Carpet trim
+              <span className="order-summary__item-info">{carpetTrim}</span>
+            </li>
+          </ul>
+        </div>
+      </animated.div>
     </div>
   )
 }

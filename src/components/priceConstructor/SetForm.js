@@ -12,7 +12,7 @@ const SetForm = () => {
         discount="-40%"
         title="Economy"
         imageUrl={set1}
-        totalPrice="59"
+        totalPrice={59}
         originalPrice="100"
         firstProperty="Front or rear"
       />
@@ -20,7 +20,7 @@ const SetForm = () => {
         discount="-15%"
         title="Standart"
         imageUrl={set2}
-        totalPrice="119"
+        totalPrice={119}
         originalPrice="140"
         firstProperty="Front and rear"
       />
@@ -28,7 +28,7 @@ const SetForm = () => {
         discount="-10%"
         title="Premium"
         imageUrl={set3}
-        totalPrice="199"
+        totalPrice={199}
         originalPrice="220"
         firstProperty="Front and rear + trunk mat"
       />

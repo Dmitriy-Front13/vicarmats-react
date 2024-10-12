@@ -126,6 +126,7 @@ const CarMakeForm = ({ onNext }) => {
             aria-label='Car make'
             placeholder='Car make'
             classNamePrefix="car-make"
+            maxMenuHeight={210}
             required
           />
         </div>
@@ -138,6 +139,7 @@ const CarMakeForm = ({ onNext }) => {
             aria-label='Car model'
             placeholder='Car model'
             classNamePrefix="car-make"
+            maxMenuHeight={210}
             classNames={{
               option: (state) => state.isDisabled ? 'option-car-make--disabled' : ''
             }}
@@ -153,6 +155,7 @@ const CarMakeForm = ({ onNext }) => {
             aria-label='Car year'
             placeholder='Car year'
             classNamePrefix="car-make"
+            maxMenuHeight={210}
             required
           />
         </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Toastify from 'toastify-js';
+import { getCurrentDate } from '../../utils/getCurrentDate';
 
 import 'toastify-js/src/toastify.css';
 import './feedback.scss';
@@ -12,13 +13,12 @@ const FeedbackForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const onSubmit = async (data) => {
     setIsLoading(true);
-    const currentDate = new Date().toISOString();
-
     try {
+      const date = getCurrentDate();
       const response = await axios.post('https://vicarmats/server/action.php', {
         ...data,
         formName: 'feedback',
-        date: currentDate,
+        date
       });
 
       if (response.status === 200) {

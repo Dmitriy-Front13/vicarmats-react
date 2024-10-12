@@ -1,26 +1,41 @@
-import { useSelector } from "react-redux";
-const OrderTotal = () => {
-  const subtotal = useSelector((state) => state.priceConstructor.price);
-  const shipping = useSelector((state) => state.priceConstructor.shipping.shippingPrice)
-  const total = Number(subtotal) + shipping;
+import { useEffect } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { updatePrice } from "../priceConstructor/priceConstructorSlice";
+
+import './orderTotal.scss';
+
+const OrderTotal = ({inCheckout}) => {
+  const dispatch = useDispatch();
+  const subtotal = useSelector((state) => state.priceConstructor.price.subtotal);
+  const shipping = useSelector((state) => state.priceConstructor.shipping.shippingPrice);
+  const total = subtotal + shipping;
+  useEffect(() => {
+    dispatch(updatePrice({
+      total: total
+    }));
+  }, [total, dispatch]);
+
   return (
-    <div className="container">
-      <div className="order__total">
-        <div className="order__items">
-          <div className="order__total-item">
-            <p className="total-text">Subtotal</p>
-            <span className="total-price">{subtotal}$</span>
-          </div>
-          <div className="order__total-item">
-            <p className="total-text">Shipping</p>
-            <span className="total-price">{shipping}$</span>
-          </div>
-        </div>
-        <div className="order__total-item">
-          <p className="total-text bold">Total</p>
-          <span className="total-price">{total}$</span>
-        </div>
-      </div>
+    <div className={`order-total ${inCheckout ? 'checkout-form__total' : ''}`}>
+      <ul className="order-total__items">
+        <li className="order-total__item">
+          Subtotal
+          <span className="order-total__item-price">{subtotal} $</span>
+        </li>
+        <li className="order-total__item">
+          Shipping
+          <span className="order-total__item-price">{shipping} $</span>
+        </li>
+        <li className="order-total__item">
+          Tax
+          <span className="order-total__item-price">№ HST165t Appolo</span>
+        </li>
+        <li className="order-total__item">
+          Total
+          <span className="order-total__item-price">{total} $</span>
+        </li>
+      </ul>
     </div>
   )
 }

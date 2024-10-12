@@ -12,7 +12,7 @@ const AboutProduct = () => {
       <AboutProductInfo/>
       <Features/>
       <Comparison/>
-      <Link to='/price-constructor' className="shopNow-link">Shop now</Link>
+      <Link to='/#price-constructor' className="shopNow-link">Shop now</Link>
       <Reviews/>
       <FAQ/>
     </main>
