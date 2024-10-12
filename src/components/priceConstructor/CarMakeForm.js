@@ -77,7 +77,7 @@ const generateCarYears = () => {
 const carYearsOptions = generateCarYears();
 
 
-const CarMakeForm = ({ onNext }) => {
+const CarMakeForm = ({ onNext, currentStep }) => {
   const [models, setModels] = useState([]);
   const dispatch = useDispatch();
   const carMake = useSelector((state) => state.priceConstructor.carMake);
@@ -103,14 +103,19 @@ const CarMakeForm = ({ onNext }) => {
     }
   };
   const handleModelChange = (selectedOption) => {
-    dispatch(updateCarModel(selectedOption)); 
+    dispatch(updateCarModel(selectedOption));
   };
 
   const handleYearChange = (selectedOption) => {
-    dispatch(updateCarYear(selectedOption)); 
+    dispatch(updateCarYear(selectedOption));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onNext();
   };
   return (
-    <form className={'price-constructor__step price-constructor__step--active constructor-step'} onSubmit={onNext}>
+    <form className={`price-constructor__step constructor-step ${currentStep === 0 ? 'price-constructor__step--active' : ''}`}
+      onSubmit={handleSubmit}>
       <h3 className="constructor-step__title">Find your car from the list below</h3>
       <div className="constructor-step__image">
         <img src={step1} alt="Step 1 descriptive image" />
@@ -127,6 +132,7 @@ const CarMakeForm = ({ onNext }) => {
             placeholder='Car make'
             classNamePrefix="car-make"
             maxMenuHeight={210}
+            autoFocus={false}
             required
           />
         </div>
@@ -139,6 +145,7 @@ const CarMakeForm = ({ onNext }) => {
             aria-label='Car model'
             placeholder='Car model'
             classNamePrefix="car-make"
+            autoFocus={false}
             maxMenuHeight={210}
             classNames={{
               option: (state) => state.isDisabled ? 'option-car-make--disabled' : ''
@@ -153,6 +160,7 @@ const CarMakeForm = ({ onNext }) => {
             value={carYear}
             blurInputOnSelect={true}
             aria-label='Car year'
+            autoFocus={false}
             placeholder='Car year'
             classNamePrefix="car-make"
             maxMenuHeight={210}

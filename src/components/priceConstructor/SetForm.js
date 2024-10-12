@@ -4,9 +4,9 @@ import set1 from '../../assets/images/priceConstructor/sets/set-1.jpg';
 import set2 from '../../assets/images/priceConstructor/sets/set-2.jpg';
 import set3 from '../../assets/images/priceConstructor/sets/set-3.jpg';
 
-const SetForm = () => {
+const SetForm = ({currentStep}) => {
   return (
-    <form className={'price-constructor__step price-constructor__step--active constructor-step'}>
+    <form className={`price-constructor__step constructor-step ${currentStep === 2 ? 'price-constructor__step--active': ''}`}>
       <h3 className="constructor-step__title">Choose a set</h3>
       <CardStep
         discount="-40%"

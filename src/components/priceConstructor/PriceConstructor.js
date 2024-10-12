@@ -44,9 +44,9 @@ const PriceConstructor = () => {
           <StepNavigation currentStep={currentStep} onStepChange={handleStepChange} completedSteps={completedSteps} />
 
           <div id="price-constructor-form" className="price-constructor__form">
-            {currentStep === 0 && <CarMakeForm onNext={() => completeStep(0)} />}
-            {currentStep === 1 && <ColorForm onNext={() => completeStep(1)} />}
-            {currentStep === 2 && <SetForm />}
+            <CarMakeForm onNext={() => completeStep(0)} currentStep={currentStep}/>
+            <ColorForm onNext={() => completeStep(1)} currentStep={currentStep}/>
+            <SetForm currentStep={currentStep}/>
           </div>
         </div>
       </div>

@@ -26,11 +26,15 @@ const trimColorItems = [
   { value: 'yellow', label: 'Yellow', isDisabled: true },
 ];
 
-const ColorForm = ({ onNext }) => {
+const ColorForm = ({ onNext, currentStep }) => {
   const dispatch = useDispatch();
   const carpetColor = useSelector((state) => state.priceConstructor.carpetColor);
   const carpetTrim = useSelector((state) => state.priceConstructor.carpetTrim);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onNext();
+  };
 
   const getImageSrc = () => {
     try {
@@ -40,7 +44,8 @@ const ColorForm = ({ onNext }) => {
     };
   };
   return (
-    <form className={'price-constructor__step price-constructor__step--active constructor-step'} onSubmit={onNext}>
+    <form className={`price-constructor__step constructor-step ${currentStep === 1 ? 'price-constructor__step--active' : ''}`}
+      onSubmit={handleSubmit}>
       <h3 className="constructor-step__title">Personalize the colour of your future car mats</h3>
       <div className="constructor-step__image--step2">
         <img
@@ -57,6 +62,7 @@ const ColorForm = ({ onNext }) => {
             }}
             value={carpetColorItems.find((item) => item.value === carpetColor)}
             blurInputOnSelect={true}
+            autoFocus={false}
             aria-label="Carpet color"
             placeholder="Carpet color"
             classNamePrefix="car-make"
@@ -70,6 +76,7 @@ const ColorForm = ({ onNext }) => {
             onChange={(option) => dispatch(updateCarpetTrim(option.value))}
             value={trimColorItems.find(item => item.value === carpetTrim)}
             blurInputOnSelect={true}
+            autoFocus={false}
             aria-label='Carpet color'
             placeholder='Carpet color'
             classNamePrefix="car-make"
