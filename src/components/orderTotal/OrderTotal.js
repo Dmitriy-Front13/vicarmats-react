@@ -5,7 +5,9 @@ import { updatePrice } from "../priceConstructor/priceConstructorSlice";
 
 import './orderTotal.scss';
 
-const OrderTotal = ({inCheckout}) => {
+
+
+const OrderTotal = ({ inCheckout }) => {
   const dispatch = useDispatch();
   const subtotal = useSelector((state) => state.priceConstructor.price.subtotal);
   const shipping = useSelector((state) => state.priceConstructor.shipping.shippingPrice);
@@ -18,6 +20,7 @@ const OrderTotal = ({inCheckout}) => {
 
   return (
     <div className={`order-total ${inCheckout ? 'checkout-form__total' : ''}`}>
+      <h4 className="order-total__title">Order summary</h4>
       <ul className="order-total__items">
         <li className="order-total__item">
           Subtotal
@@ -25,11 +28,17 @@ const OrderTotal = ({inCheckout}) => {
         </li>
         <li className="order-total__item">
           Shipping
-          <span className="order-total__item-price">{shipping} $</span>
+          {
+            !shipping
+              ? <span className="order-total__item-price order-total__item-price--none">Enter postal code</span>
+              : <span className="order-total__item-price">{shipping} $</span>
+          }
         </li>
         <li className="order-total__item">
           Tax
-          <span className="order-total__item-price">№ HST165t Appolo</span>
+          <span className="order-total__item-tax">
+            No HST/GST Applied: As a small business with revenue under $30,000, we are not required to charge HST/GST. This allows us to keep our prices affordable for our valued customers!
+          </span>
         </li>
         <li className="order-total__item">
           Total

@@ -2,7 +2,10 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+
 import { updatePrice, updatePromo } from '../priceConstructor/priceConstructorSlice';
+
+import Spinner from '../spinner/Spinner';
 
 import './orderPromo.scss';
 
@@ -12,10 +15,11 @@ const OrderPromo = () => {
   const shippingCost = useSelector((state) => state.priceConstructor.price.product);
   const usePromo = useSelector((state) => state.priceConstructor.promo.usePromo);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [error, setErrorState] = useState(false);
+  const { register, handleSubmit, setError, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    setLoading(true);
     const { promoCode } = data;
     try {
       const response = await axios.get('https://eva-tech.ca/promoCodes.json');
@@ -35,11 +39,14 @@ const OrderPromo = () => {
           promoValue: foundPromo.code,
           discount: discountAmount
         }));
+        setLoading(false);
       } else {
-        setErrorState(true);
+        setError('promoCode', { type: 'manual', message: 'Promocode invalid' });
+        setLoading(false);
       }
     } catch (err) {
-      setErrorState(true);
+      setError('promoCode', { type: 'manual', message: 'Something went wrong...' });
+      setLoading(false);
     }
   };
 
@@ -49,14 +56,15 @@ const OrderPromo = () => {
       <input
         className="order-promo__input"
         type="text"
-        {...register('promoCode')}
+        {...register('promoCode', { required: 'Promocode is required' })}
         placeholder="If you have a promo code - enter here"
       />
-      {error && <p className="promoInvalid">Promocode invalid</p>}
+      {usePromo && <p className="promoValid">Promocode valid!</p>}
+      {errors.promoCode && <p className="promoInvalid">{errors.promoCode.message}</p>}
       <button type="submit"
-        className={`order-promo__btn ${usePromo ? 'promoValid' : ''}`}
+        className={`order-promo__btn ${loading ? 'order-promo__btn--loading' : ''}`}
         disabled={usePromo}>
-        {usePromo ? 'Promocode valid!' : 'Check promocode'}
+          {loading ? <Spinner /> : 'Check promocode'}
       </button>
     </form>
   );

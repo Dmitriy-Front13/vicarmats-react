@@ -62,12 +62,12 @@ const OrderSummary = () => {
               <span className="order-summary__item-info">{carYear}</span>
             </li>
             <li className="order-summary__item">
-              Carpet color
-              <span className="order-summary__item-info">{carpetColor}</span>
+              Color
+              <span className="order-summary__item-info">{carpetColor} / {carpetTrim}</span>
             </li>
             <li className="order-summary__item">
-              Carpet trim
-              <span className="order-summary__item-info">{carpetTrim}</span>
+              Set
+              <span className="order-summary__item-info">{set}</span>
             </li>
           </ul>
         </div>

@@ -10,7 +10,6 @@
   align-items: start;
 
   &__title {
-    padding-left: 15px;
     font-size: 24px;
     margin-bottom: 8px;
     font-weight: 800;
@@ -111,5 +110,56 @@
       @extend %btn--loading;
     }
   }
-  
+  @media (max-width:920px) {
+    grid-template-columns: 1fr;
+    &__inner {
+      grid-row: 2;
+    }
+    &__total {
+      grid-row: 3;
+      grid-column: 1;
+    }
+    &__payment {
+      grid-row: 4;
+      grid-column: 1;
+    }
+    &__btn {
+      grid-column: 1;
+    }
+  }
+  @media (max-width:700px) {
+    max-width: 360px;
+    margin: 20px auto 0;
+    gap: 20px;
+    &__title {
+      font-size: 16px;
+    }
+    &__sub-title {
+      font-size: 14px;
+    }
+    &__payment {
+      padding: 20px 15px;
+    }
+    &__payment-box {
+      margin-left: 15px;
+    }
+    &__input {
+      height: 40px;
+    }
+    &__textarea {
+      height: 80px;
+    }
+    &__box {
+      padding: 0 20px;
+    }
+    &__total {
+      margin-top: 10px;
+      .order-total__title {
+        display: block;
+        font-size: 16px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

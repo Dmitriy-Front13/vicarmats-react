@@ -16,7 +16,7 @@ import './billingForm.scss';
 
 const BillingForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  
+
   const state = useSelector((state) => state.priceConstructor);
   const { carMake, carModel, carYear, carpetColor, carpetTrim, set, shipping, price, promo } = state;
 
@@ -204,7 +204,7 @@ const BillingForm = () => {
         <div className="checkout-form__payment-box">
           <h4 className='checkout-form__payment-title'>E-Transfer Payment Instructions</h4>
           <p className="checkout-form__payment-text">
-            To complete your order, please follow the simple steps for payment via E-Transfer. Send the total amount of {orderNumber} to our e-transfer account: <b style={{ color: 'blue' }}>info@eva-tech.ca</b>. Please include your order number in the transfer message. You will receive an order number after you submit your order.
+            To complete your order, please follow the simple steps for payment via E-Transfer. Send the total amount of <b style={{ color: 'blue' }}>{orderNumber}</b> to our e-transfer account: <b style={{ color: 'blue' }}>info@eva-tech.ca</b>. Please include your order number in the transfer message. You will receive an order number after you submit your order.
           </p>
         </div>
 

@@ -19,7 +19,7 @@
   }
 
   &__title-arrow {
-    margin-left: 5px;
+    margin-left: 10px;
   }
 
   &__inner {
@@ -62,9 +62,49 @@
     padding: 5px;
     font-size: 15px;
   }
+  &__item-info {
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: capitalize;
+    text-align: right;
+  }
 
   &__price {
     font-weight: 500;
     font-size: 16px;
+  }
+  @media (max-width: 1000px) {
+    &__list {
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+  }
+  @media (max-width: 920px) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  @media (max-width: 700px) {
+    &__box {
+      padding: 10px 15px;
+    }
+    &__title {
+      font-weight: 500;
+    }
+    &__img-box {
+      padding: 12px;
+      height: 155px;
+      border-radius: 10px;
+    }
+    &__item {
+      padding: 2.5px;
+    }
+  }
+  @media (max-width:550px) {
+    &__item {
+      font-size: 13px;
+    }
+    &__item-info {
+      font-size: 14px;
+    }
   }
 }
