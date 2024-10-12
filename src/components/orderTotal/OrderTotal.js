@@ -29,9 +29,9 @@ const OrderTotal = ({ inCheckout }) => {
         <li className="order-total__item">
           Shipping
           {
-            !shipping
-              ? <span className="order-total__item-price order-total__item-price--none">Enter postal code</span>
-              : <span className="order-total__item-price">{shipping} $</span>
+            typeof shipping === 'number'
+            ? <span className="order-total__item-price">{shipping} $</span>
+            : <span className="order-total__item-price order-total__item-price--none">Enter postal code</span>
           }
         </li>
         <li className="order-total__item">

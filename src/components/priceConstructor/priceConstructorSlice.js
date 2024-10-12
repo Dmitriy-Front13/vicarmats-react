@@ -15,7 +15,7 @@ const initialState = {
   },
   shipping: {
     postalCode: '',
-    shippingPrice: 0
+    shippingPrice: ''
   },
   promo: {
     usePromo: false,
