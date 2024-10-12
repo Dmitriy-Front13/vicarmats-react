@@ -1,4 +1,5 @@
 import Advantages from '../components/advantages/Advantages';
+import FAQ from '../components/faq/FAQ';
 import Feedback from '../components/feedback/Feedback';
 import GetGift from '../components/getGift/GetGift';
 import Hero from '../components/hero/Hero';
@@ -19,6 +20,7 @@ const MainPage = () => {
       <PriceConstructor/>
       <Reviews/>
       <HowWeWork/>
+      <FAQ/>
       <Feedback/>
       <ModalManager/>
     </main>
