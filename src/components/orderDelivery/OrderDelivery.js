@@ -39,7 +39,7 @@ const OrderDelivery = () => {
     setValue('postalCode', uppercaseValue);
   }
   return (
-    <form className="order-promo order-delivery" onSubmit={handleSubmit(onSubmit)}>
+    <form className="order-promo__form order-delivery" onSubmit={handleSubmit(onSubmit)}>
       <label className="order-promo__label order-delivery__label">To provide an accurate shipping cost, please enter your postal code. This information is used solely for calculating your delivery charges.</label>
       <input
         className="order-promo__input"

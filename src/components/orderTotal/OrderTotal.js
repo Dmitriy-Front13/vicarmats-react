@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updatePrice } from "../priceConstructor/priceConstructorSlice";
 
 import './orderTotal.scss';
+import Popover from "../Popover/Popover";
 
 
 
@@ -30,14 +31,17 @@ const OrderTotal = ({ inCheckout }) => {
           Shipping
           {
             typeof shipping === 'number'
-            ? <span className="order-total__item-price">{shipping} $</span>
-            : <span className="order-total__item-price order-total__item-price--none">Enter postal code</span>
+              ? <span className="order-total__item-price">{shipping} $</span>
+              : <span className="order-total__item-price order-total__item-price--none">Enter postal code</span>
           }
         </li>
         <li className="order-total__item">
           Tax
-          <span className="order-total__item-tax">
-            No HST/GST Applied: As a small business with revenue under $30,000, we are not required to charge HST/GST. This allows us to keep our prices affordable for our valued customers!
+          <span className="order-total__item-price order-total__item-tax">
+            No tax
+            <Popover className="order-total__tooltip">
+              No HST/GST Applied: As a small business with revenue under $30,000, we are not required to charge HST/GST. This allows us to keep our prices affordable for our valued customers!
+            </Popover>
           </span>
         </li>
         <li className="order-total__item">

@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useSpring, animated } from 'react-spring';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -10,6 +11,12 @@ import Spinner from '../spinner/Spinner';
 import './orderPromo.scss';
 
 const OrderPromo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef(null);
+  const animation = useSpring({
+    height: isOpen ? contentRef.current.scrollHeight : 0,
+    overflow: 'hidden'
+  });
   const dispatch = useDispatch();
 
   const shippingCost = useSelector((state) => state.priceConstructor.price.product);
@@ -51,22 +58,33 @@ const OrderPromo = () => {
   };
 
   return (
-    <form className="order-promo" onSubmit={handleSubmit(onSubmit)}>
-      <label className="order-promo__label">Promocode</label>
-      <input
-        className="order-promo__input"
-        type="text"
-        {...register('promoCode', { required: 'Promocode is required' })}
-        placeholder="If you have a promo code - enter here"
-      />
-      {usePromo && <p className="promoValid">Promocode valid!</p>}
-      {errors.promoCode && <p className="promoInvalid">{errors.promoCode.message}</p>}
-      <button type="submit"
-        className={`order-promo__btn ${loading ? 'order-promo__btn--loading' : ''}`}
-        disabled={usePromo}>
-          {loading ? <Spinner /> : 'Check promocode'}
-      </button>
-    </form>
+    <div className="order-promo">
+      <div className="order-promo__box" onClick={() => setIsOpen(!isOpen)}>
+        If you have a promo code - click here
+        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line y1="-0.5" x2="10" y2="-0.5" transform="matrix(0.73994 0.672673 -0.489416 0.87205 0 1)" stroke="black" />
+          <line y1="-0.5" x2="10" y2="-0.5" transform="matrix(-0.73994 0.672673 0.489416 0.87205 14.7988 1)" stroke="black" />
+        </svg>
+      </div>
+      <animated.div style={animation} ref={contentRef} >
+        <form className="order-promo__form" onSubmit={handleSubmit(onSubmit)}>
+          <label className="order-promo__label">Promocode</label>
+          <input
+            className="order-promo__input"
+            type="text"
+            {...register('promoCode', { required: 'Promocode is required' })}
+            placeholder="Promo code"
+          />
+          {usePromo && <p className="promoValid">Promocode valid!</p>}
+          {errors.promoCode && <p className="promoInvalid">{errors.promoCode.message}</p>}
+          <button type="submit"
+            className={`order-promo__btn ${loading ? 'order-promo__btn--loading' : ''}`}
+            disabled={usePromo}>
+            {loading ? <Spinner /> : 'Check promocode'}
+          </button>
+        </form>
+      </animated.div>
+    </div>
   );
 };
 
