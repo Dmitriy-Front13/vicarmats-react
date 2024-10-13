@@ -6,7 +6,7 @@ import { updateShipping } from '../priceConstructor/priceConstructorSlice';
 
 const OrderDelivery = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset, setValue  } = useForm();
   const isShipping = useSelector((state) => state.priceConstructor.shipping.postalCode);
 
   const calculateShipping = (postalCode) => {
@@ -34,6 +34,10 @@ const OrderDelivery = () => {
 
     reset();
   };
+  const handleInput = (e) => {
+    const uppercaseValue = e.target.value.toUpperCase();
+    setValue('postalCode', uppercaseValue);
+  }
   return (
     <form className="order-promo order-delivery" onSubmit={handleSubmit(onSubmit)}>
       <label className="order-promo__label order-delivery__label">To provide an accurate shipping cost, please enter your postal code. This information is used solely for calculating your delivery charges.</label>
@@ -41,7 +45,7 @@ const OrderDelivery = () => {
         className="order-promo__input"
         type="text"
         placeholder="Postal code"
-        disabled={isShipping}
+        onInput={handleInput}
         {...register('postalCode', {
           required: 'Postal code is required',
           pattern: {
@@ -55,8 +59,8 @@ const OrderDelivery = () => {
       <button
         type="submit"
         className="order-promo__btn"
-        disabled={isShipping}>
-        Calculate delivery
+        >
+        { !isShipping ? 'Calculate delivery' : 'Recalculate delivery'}
       </button>
     </form>
   )
