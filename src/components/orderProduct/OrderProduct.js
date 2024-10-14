@@ -1,7 +1,6 @@
 
 import { useSelector } from 'react-redux';
 
-import Popover from '../Popover/Popover';
 
 import './orderProduct.scss'
 const OrderProduct = () => {
@@ -38,11 +37,7 @@ const OrderProduct = () => {
         </li>
         <li className="order-product__item">
           Production Time
-          <span className="order-product__desc order-product__desc--time">2 - 4 days
-            <Popover className="order-product__tooltip">
-              The production of your car mats will take no longer than 5 business days. We aim to make this process as fast and convenient as possible!
-            </Popover>
-          </span>
+          <span className="order-product__desc order-product__desc--time">2 - 4 days</span>
         </li>
       </ul>
     </div>

@@ -22,7 +22,7 @@
   max-width: 586px;
 
   &__box {
-    
+
     display: flex;
     border: 1px solid #9C9C9C;
     background-color: #FCFCFC;
@@ -32,6 +32,7 @@
     align-items: center;
     cursor: pointer;
   }
+
   &__form {
     margin-top: 10px;
     display: flex;
@@ -72,8 +73,17 @@
     }
   }
 
+  &__btn--promo {
+    background: rgb(217 119 6);
+    &:disabled {
+      background: #d97706;
+      opacity: 0.5;
+      color: white;
+    }
+  }
+
   @media (max-width: 900px) {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1;
   }
 
@@ -81,6 +91,7 @@
     &__form {
       padding: 30px;
     }
+
     &__box {
       padding: 10px 15px;
     }
@@ -113,7 +124,7 @@
 
   @media (max-width: 900px) {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
   }
 
   @media (max-width: 700px) {

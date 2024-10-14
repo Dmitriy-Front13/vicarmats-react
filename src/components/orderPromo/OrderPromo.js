@@ -60,7 +60,7 @@ const OrderPromo = () => {
   return (
     <div className="order-promo">
       <div className="order-promo__box" onClick={() => setIsOpen(!isOpen)}>
-        If you have a promo code - click here
+        Have promocode?
         <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line y1="-0.5" x2="10" y2="-0.5" transform="matrix(0.73994 0.672673 -0.489416 0.87205 0 1)" stroke="black" />
           <line y1="-0.5" x2="10" y2="-0.5" transform="matrix(-0.73994 0.672673 0.489416 0.87205 14.7988 1)" stroke="black" />
@@ -78,7 +78,7 @@ const OrderPromo = () => {
           {usePromo && <p className="promoValid">Promocode valid!</p>}
           {errors.promoCode && <p className="promoInvalid">{errors.promoCode.message}</p>}
           <button type="submit"
-            className={`order-promo__btn ${loading ? 'order-promo__btn--loading' : ''}`}
+            className={`order-promo__btn order-promo__btn--promo ${loading ? 'order-promo__btn--loading' : ''}`}
             disabled={usePromo}>
             {loading ? <Spinner /> : 'Check promocode'}
           </button>

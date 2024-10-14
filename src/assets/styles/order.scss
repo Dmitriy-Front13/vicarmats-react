@@ -30,6 +30,14 @@
     grid-column: span 2;
     margin: 0 auto;
     font-size: 18px;
+    background: linear-gradient(184deg, #429600 0%, #59ca00 100%);
+
+    &:disabled {
+      background: linear-gradient(184deg, #429600 0%, #59ca00 100%);
+      color: white;
+      cursor: not-allowed;
+      opacity: .7;
+    }
   }
 
   @media (max-width: 900px) {
@@ -45,21 +53,27 @@
       grid-row: 5;
     }
   }
+
   @media (max-width: 700px) {
     &__inner {
       max-width: 359px;
       gap: 10px;
     }
+
     &__title {
       font-size: 20px;
     }
+
     &__sub-title {
       font-size: 16px;
     }
+
     &__btn {
       font-size: 16px;
       margin-top: 20px;
       height: 50px;
+
+
     }
   }
 }

@@ -9,7 +9,7 @@ const Popover = ({ children, className }) => {
   };
   return (
     <>
-      <button onClick={toggleTooltip} type="button" className="tooltip-button">?</button>
+      <button onClick={toggleTooltip} type="button" className="tooltip-button">why ?</button>
       <div className={`tooltip ${className} ${isTooltipVisible ? 'tooltip--visible' : ''}`}>
         {children}
       </div>
