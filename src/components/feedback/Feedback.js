@@ -15,7 +15,7 @@ const FeedbackForm = () => {
     setIsLoading(true);
     try {
       const date = getCurrentDate();
-      const response = await axios.post('https://vicarmats/server/action.php', {
+      const response = await axios.post('https://eva-tech.ca/action.php', {
         ...data,
         formName: 'feedback',
         date

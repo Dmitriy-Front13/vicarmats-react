@@ -26,7 +26,7 @@ const BillingForm = () => {
   useEffect(() => {
     const fetchOrderNumber = async () => {
       try {
-        const response = await axios.get('https://vicarmats.com/orderNumber.php');
+        const response = await axios.get('https://eva-tech.ca/orderNumber.php');
         if (response.data && response.data.orderNumber) {
           setOrderNumber(response.data.orderNumber);
         }
@@ -68,7 +68,7 @@ const BillingForm = () => {
       const response = await axios.post('https://eva-tech.ca/action.php', payload);
 
       if (response.status === 200) {
-        axios.post('https://vicarmats.com/orderNumber.php');
+        axios.post('https://eva-tech.ca/orderNumber.php');
         const div = document.createElement("div");
         div.innerHTML = `
         Thank you for your order<br>
