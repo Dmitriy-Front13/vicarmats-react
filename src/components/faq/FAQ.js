@@ -12,8 +12,8 @@ const FAQItem = ({ title, content }) => {
     height: isOpen ? contentRef.current.scrollHeight : 0
   });
   return (
-    <div className="faq__item" onClick={() => setIsOpen(!isOpen)}>
-      <h5 className={`faq__item-title ${isOpen ? 'opened' : ''}`}>{title}</h5>
+    <div className="faq__item" >
+      <h5 className={`faq__item-title ${isOpen ? 'opened' : ''}`} onClick={() => setIsOpen(!isOpen)}>{title}</h5>
       <animated.div style={animation} className='faq__item-text'>
         <p ref={contentRef}>{content}</p>
       </animated.div>

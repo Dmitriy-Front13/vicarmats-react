@@ -13,8 +13,6 @@ const importAll = (r) => r.keys().map(r);
 const images = importAll(require.context('../../assets/images/work-examples', false, /\.(png|jpe?g|svg)$/));
 
 
-
-
 const WorkExamples = () => {
 
   return (
