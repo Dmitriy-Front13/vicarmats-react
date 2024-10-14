@@ -6,6 +6,7 @@ import OrderDelivery from '../components/orderDelivery/OrderDelivery';
 import OrderPromo from '../components/orderPromo/OrderPromo';
 import OrderBtn from '../components/orderBtn/OrderBtn';
 import Reviews from '../components/Reviews/Reviews';
+import FAQ from '../components/faq/FAQ';
 
 import '../assets/styles/order.scss';
 
@@ -33,6 +34,7 @@ const OrderPage = () => {
         </div>
       </section>
       <Reviews />
+      <FAQ/>
     </main >
   )
 }
