@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
-
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import MainPage from '../../pages/MainPage';

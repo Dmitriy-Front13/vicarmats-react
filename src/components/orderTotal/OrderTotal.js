@@ -38,9 +38,9 @@ const OrderTotal = ({ inCheckout }) => {
         <li className="order-total__item">
           Tax
           <span className="order-total__item-price order-total__item-tax">
-            No tax
+            No HST/GST Applied
             <Popover className="order-total__tooltip">
-              No HST/GST Applied: As a small business with revenue under $30,000, we are not required to charge HST/GST. This allows us to keep our prices affordable for our valued customers!
+              As a small business with revenue under $30,000, we are not required to charge HST/GST. This allows us to keep our prices affordable for our valued customers!
             </Popover>
           </span>
         </li>

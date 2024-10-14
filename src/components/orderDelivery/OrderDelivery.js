@@ -1,12 +1,12 @@
-
+import { forwardRef, useImperativeHandle } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { updateShipping } from '../priceConstructor/priceConstructorSlice';
 
-const OrderDelivery = () => {
+const OrderDelivery = forwardRef((props, ref) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors }, reset, setValue  } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
   const isShipping = useSelector((state) => state.priceConstructor.shipping.postalCode);
 
   const calculateShipping = (postalCode) => {
@@ -17,9 +17,9 @@ const OrderDelivery = () => {
     if (firstTwo === 'K7') {
       shippingCost = 0;
     } else if (['K', 'M'].includes(cleanedPostalCode[0]) || ['L1', 'L3P', 'L3R', 'L3S', 'L6B', 'L6C', 'L6E'].includes(cleanedPostalCode.substring(0, 3))) {
-      shippingCost = 15.5;
+      shippingCost = 19.5;
     } else {
-      shippingCost = 20.5;
+      shippingCost = 22.5;
     }
 
     return shippingCost;
@@ -34,6 +34,10 @@ const OrderDelivery = () => {
 
     reset();
   };
+
+  useImperativeHandle(ref, () => ({
+    validateAndSubmit: () => handleSubmit(onSubmit)(),
+  }));
   const handleInput = (e) => {
     const uppercaseValue = e.target.value.toUpperCase();
     setValue('postalCode', uppercaseValue);
@@ -59,12 +63,12 @@ const OrderDelivery = () => {
       <button
         type="submit"
         className="order-promo__btn"
-        >
-        { !isShipping ? 'Calculate delivery' : 'Recalculate delivery'}
+      >
+        {!isShipping ? 'Calculate delivery' : 'Recalculate delivery'}
       </button>
     </form>
   )
-}
+});
 
 export default OrderDelivery;
 

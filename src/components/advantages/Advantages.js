@@ -39,7 +39,7 @@ const Advantages = () => {
         <p className="video__subtitle">about EVA Floorliner</p>
       </div>
       <div className="advantages__video">
-        <a data-fancybox href="https://youtu.be/_eG74RicBCw?si=_lHmQMZXav-F5VIx">
+        <a data-fancybox href="https://youtu.be/UijjcqK0r5c?si=5S_sJcYn1WDx90Vw">
           <img src={video} alt="" />
         </a>
       </div>

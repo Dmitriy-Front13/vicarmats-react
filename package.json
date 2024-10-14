@@ -1,5 +1,6 @@
 {
   "name": "vicarmats",
+  "homepage": "https://eva-tech.ca",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

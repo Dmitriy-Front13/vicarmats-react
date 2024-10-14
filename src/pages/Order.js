@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import OrderProduct from "../components/orderProduct/OrderProduct";
 import OrderTotal from '../components/orderTotal/OrderTotal';
 import OrderDelivery from '../components/orderDelivery/OrderDelivery';
@@ -8,6 +10,13 @@ import Reviews from '../components/Reviews/Reviews';
 import '../assets/styles/order.scss';
 
 const OrderPage = () => {
+  const orderDeliveryRef = useRef(null);
+
+  const handleCheckout = () => {
+    if (orderDeliveryRef.current) {
+      orderDeliveryRef.current.validateAndSubmit();
+    }
+  };
   return (
     <main>
       <section className="order">
@@ -17,9 +26,9 @@ const OrderPage = () => {
           <div className="order__inner">
             <OrderProduct />
             <OrderPromo />
-            <OrderDelivery />
+            <OrderDelivery ref={orderDeliveryRef} />
             <OrderTotal />
-            <OrderBtn />
+            <OrderBtn onCheckout={handleCheckout}/>
           </div>
         </div>
       </section>

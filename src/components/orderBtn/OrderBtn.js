@@ -1,13 +1,19 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-const OrderBtn = () => {
+const OrderBtn = ({ onCheckout }) => {
   const navigate = useNavigate();
   const isShipping = useSelector((state) => state.priceConstructor.shipping.postalCode);
+  const handleClick = () => {
+    if (isShipping) {
+      navigate('/checkout');
+    } else {
+      onCheckout();
+    }
+  };
   return (
     <button
-      className="order__btn"
-      disabled={!isShipping}
-      onClick={() => navigate('/checkout')}>Continue to checkout</button>
+      className={`order__btn ${!isShipping ? 'order__btn--disabled' :''}`}
+      onClick={handleClick}>Continue to checkout</button>
   )
 }
 
