@@ -7,13 +7,13 @@ import warranty from '../../assets/images/howWeWork/warranty.jpg';
 
 import './howWeWork.scss'
 
+const items = [
+  { title: 'About the product', images: aboutProduct, link: 'about-product' },
+  { title: 'About us', images: aboutUs, link: 'about-us' },
+  { title: 'Warranty and refund', images: warranty, link: 'warranty' },
+  { title: 'Delivery', images: delivery, link: 'delivery' }
+];
 const HowWeWork = () => {
-  const items = [
-    { title: 'About the product', images: aboutProduct, link: 'about-product' },
-    { title: 'About us', images: aboutUs, link: 'about-us' },
-    { title: 'Warranty and refund', images: warranty, link: 'warranty' },
-    { title: 'Delivery', images: delivery, link: 'delivery' }
-  ];
   return (
     <section className="how-we-work section">
       <div className="container">

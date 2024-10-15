@@ -1,14 +1,14 @@
-import CardStep from './CardStep';
+import CardSet from '../CardSet';
 
-import set1 from '../../assets/images/priceConstructor/sets/set-1.jpg';
-import set2 from '../../assets/images/priceConstructor/sets/set-2.jpg';
-import set3 from '../../assets/images/priceConstructor/sets/set-3.jpg';
+import set1 from '../../../assets/images/priceConstructor/sets/set-1.jpg';
+import set2 from '../../../assets/images/priceConstructor/sets/set-2.jpg';
+import set3 from '../../../assets/images/priceConstructor/sets/set-3.jpg';
 
 const SetForm = ({currentStep}) => {
   return (
     <form className={`price-constructor__step constructor-step ${currentStep === 2 ? 'price-constructor__step--active': ''}`}>
       <h3 className="constructor-step__title">Choose a set</h3>
-      <CardStep
+      <CardSet
         discount="-40%"
         title="Economy"
         imageUrl={set1}
@@ -16,7 +16,7 @@ const SetForm = ({currentStep}) => {
         originalPrice="100"
         firstProperty="Front or rear"
       />
-      <CardStep
+      <CardSet
         discount="-15%"
         title="Standart"
         imageUrl={set2}
@@ -24,7 +24,7 @@ const SetForm = ({currentStep}) => {
         originalPrice="140"
         firstProperty="Front and rear"
       />
-      <CardStep
+      <CardSet
         discount="-10%"
         title="Premium"
         imageUrl={set3}

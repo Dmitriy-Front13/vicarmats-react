@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-import Toastify from 'toastify-js';
+
 import { getCurrentDate } from '../../utils/getCurrentDate';
+
+import useFormSubmit from '../../hook/useFormSubmit';
 
 import 'toastify-js/src/toastify.css';
 import './feedback.scss';
@@ -10,54 +10,18 @@ import './feedback.scss';
 
 const FeedbackForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [isLoading, setIsLoading] = useState(false);
-  const onSubmit = async (data) => {
-    setIsLoading(true);
-    try {
-      const date = getCurrentDate();
-      const response = await axios.post('https://eva-tech.ca/action.php', {
-        ...data,
-        formName: 'feedback',
-        date
-      });
+  const { isLoading, submitForm } = useFormSubmit('https://eva-tech.ca/action.php');
 
-      if (response.status === 200) {
-        Toastify({
-          text: "Message was sent successfully!",
-          duration: 6000,
-          close: true,
-          gravity: "bottom",
-          position: "center",
-          stopOnFocus: true,
-          offset: {
-            y: 50,
-          },
-          className: "form-submit-toast",
-        }).showToast();
-      }
-    } catch (error) {
-      Toastify({
-        text: "Something went wrong",
-        duration: 6000,
-        close: true,
-        gravity: "bottom",
-        position: "center",
-        stopOnFocus: true,
-        offset: {
-          y: 50,
-        },
-        className: "form-submit-toast",
-      }).showToast();
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const onSubmit = async (data) => {
+    const date = getCurrentDate();
+    const payload = { ...data, formName: 'feedback', date };
+    submitForm(payload);
+  }
   return (
     <form className={`feedback-form  ${isLoading ? 'form--pending' : ''}`} onSubmit={handleSubmit(onSubmit)}>
       <div className="form-field feedback-form__field">
         <input className="feedback-form__input form-control"
           type="text"
-          name="userName"
           placeholder="Your name*"
           {...register('userName', { required: 'Name is required' })} />
         {errors.userName && <span className='form-help'>{errors.userName.message}</span>}
@@ -65,7 +29,6 @@ const FeedbackForm = () => {
       <div className="form-field feedback-form__field">
         <input className="feedback-form__input form-control"
           type="email"
-          name="userEmail"
           placeholder="Your email*"
           {...register('userEmail', {
             required: 'Email is required',
@@ -78,7 +41,6 @@ const FeedbackForm = () => {
       </div>
       <div className="form-field feedback-form__field">
         <textarea className="feedback-form__message form-control"
-          name="userMessage"
           placeholder="Your question*"
           {...register('userMessage', { required: 'Message is required' })}></textarea>
         {errors.userMessage && <span className='form-help'>{errors.userMessage.message}</span>}

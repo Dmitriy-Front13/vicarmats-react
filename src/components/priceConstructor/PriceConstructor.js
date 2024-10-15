@@ -2,11 +2,11 @@ import { useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 import StepNavigation from './StepNavigation';
-import CarMakeForm from './CarMakeForm';
-import ColorForm from './ColorForm';
+import CarMakeForm from './forms/CarMakeForm';
+import ColorForm from './forms/ColorForm';
+import SetForm from './forms/SetForm';
 
 import './priceConstructor.scss';
-import SetForm from './SetForm';
 
 const PriceConstructor = () => {
   const { hash } = useLocation();

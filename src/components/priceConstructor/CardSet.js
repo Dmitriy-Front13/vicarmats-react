@@ -5,7 +5,7 @@ import footrest from '../../assets/images/footrest.png';
 
 import { Link } from "react-router-dom";
 
-const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, firstProperty }) => {
+const CardSet = ({ discount, title, imageUrl, totalPrice, originalPrice, firstProperty }) => {
   const dispatch = useDispatch();
   const openModalMore = () => {
     dispatch(openModal({
@@ -70,4 +70,4 @@ const CardStep = ({ discount, title, imageUrl, totalPrice, originalPrice, firstP
   );
 };
 
-export default CardStep;
+export default CardSet;

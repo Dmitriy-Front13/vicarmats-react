@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCarMake, updateCarModel, updateCarYear } from './priceConstructorSlice';
+import { updateCarMake, updateCarModel, updateCarYear } from '../priceConstructorSlice';
 import axios from 'axios';
 import Select from 'react-select';
-import step1 from '../../assets/images/priceConstructor/step-1.jpg';
+import step1 from '../../../assets/images/priceConstructor/step-1.jpg';
 
 const carOptions = [
   { value: '98', label: 'Acura' },

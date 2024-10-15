@@ -1,6 +1,6 @@
 import Select from 'react-select';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateCarpetColor, updateCarpetTrim } from './priceConstructorSlice';
+import { updateCarpetColor, updateCarpetTrim } from '../priceConstructorSlice';
 
 const carpetColorItems = [
   { value: 'black', label: 'Black' },
@@ -38,9 +38,9 @@ const ColorForm = ({ onNext, currentStep }) => {
 
   const getImageSrc = () => {
     try {
-      return require(`../../assets/images/priceConstructor/color-combinations/${!carpetColor ? 'beige' : carpetColor}-${!carpetTrim ? 'beige' : carpetTrim}.jpg`);
+      return require(`../../../assets/images/priceConstructor/color-combinations/${!carpetColor ? 'beige' : carpetColor}-${!carpetTrim ? 'beige' : carpetTrim}.jpg`);
     } catch (error) {
-      return require('../../assets/images/priceConstructor/color-combinations/beige-beige.jpg');
+      return require('../../../assets/images/priceConstructor/color-combinations/beige-beige.jpg');
     };
   };
   return (
