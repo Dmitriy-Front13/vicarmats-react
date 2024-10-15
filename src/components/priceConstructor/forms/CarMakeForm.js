@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCarMake, updateCarModel, updateCarYear } from '../priceConstructorSlice';
+import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
 import Select from 'react-select';
+
+import { updateCarMake, updateCarModel, updateCarYear } from '../priceConstructorSlice';
+
 import step1 from '../../../assets/images/priceConstructor/step-1.jpg';
 
 const carOptions = [
@@ -84,15 +87,29 @@ const CarMakeForm = ({ onNext, currentStep }) => {
   const carModel = useSelector((state) => state.priceConstructor.carModel);
   const carYear = useSelector((state) => state.priceConstructor.carYear);
 
-  const handleMakeChange = async (selectedOption) => {
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      carMake: carMake,
+      carModel: carModel,
+      carYear: carYear
+    }
+  });
+
+  const onSubmit = (data) => {
+    dispatch(updateCarMake(data.carMake));
+    dispatch(updateCarModel(data.carModel));
+    dispatch(updateCarYear(data.carYear));
+    onNext();
+  };
+
+  const handleMakeChange = async (selectedOption, onChange) => {
+    onChange(selectedOption);
     dispatch(updateCarMake(selectedOption));
     dispatch(updateCarModel(''));
-
 
     const apiUrl = `https://api.auto.ria.com/categories/1/marks/${selectedOption.value}/models`;
     try {
       const response = await axios.get(apiUrl);
-
       const modelsOptions = response.data.map((model) => ({
         value: model.value,
         label: model.name,
@@ -102,20 +119,10 @@ const CarMakeForm = ({ onNext, currentStep }) => {
       console.error('Ошибка при загрузке моделей:', error);
     }
   };
-  const handleModelChange = (selectedOption) => {
-    dispatch(updateCarModel(selectedOption));
-  };
 
-  const handleYearChange = (selectedOption) => {
-    dispatch(updateCarYear(selectedOption));
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onNext();
-  };
   return (
     <form className={`price-constructor__step constructor-step ${currentStep === 0 ? 'price-constructor__step--active' : ''}`}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit(onSubmit)}>
       <h3 className="constructor-step__title">Find your car from the list below</h3>
       <div className="constructor-step__image">
         <img src={step1} alt="Step 1 descriptive image" />
@@ -123,54 +130,74 @@ const CarMakeForm = ({ onNext, currentStep }) => {
       <div className="constructor-step__fields">
         <h4 className="constructor-step__field-title">Fill out the form to verify:</h4>
         <div className="constructor-step__field form-field">
-          <Select
-            options={carOptions}
-            onChange={handleMakeChange}
-            value={carMake}
-            blurInputOnSelect={true}
-            aria-label='Car make'
-            placeholder='Car make'
-            classNamePrefix="car-make"
-            maxMenuHeight={210}
-            autoFocus={false}
-            required
+          <Controller
+            name="carMake"
+            control={control}
+            rules={{ required: 'Car make is required' }}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={carOptions}
+                onChange={(selectedOption) => handleMakeChange(selectedOption, field.onChange)}
+                blurInputOnSelect={true}
+                aria-label='Car make'
+                placeholder='Car make'
+                classNamePrefix="car-make"
+                maxMenuHeight={210}
+                autoFocus={false}
+              />
+            )}
           />
+          {errors.carMake && <span className="form-help">{errors.carMake.message}</span>}
         </div>
         <div className="constructor-step__field form-field">
-          <Select
-            options={carMake ? models : [{ value: '', label: 'Please select car make', isDisabled: true }]}
-            onChange={handleModelChange}
-            blurInputOnSelect={true}
-            value={carModel}
-            aria-label='Car model'
-            placeholder='Car model'
-            classNamePrefix="car-make"
-            autoFocus={false}
-            maxMenuHeight={210}
-            classNames={{
-              option: (state) => state.isDisabled ? 'option-car-make--disabled' : ''
-            }}
-            required
+          <Controller
+            name="carModel"
+            control={control}
+            rules={{ required: 'Car model is required' }}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={carMake ? models : [{ value: '', label: 'Please select car make', isDisabled: true }]}
+                blurInputOnSelect={true}
+                aria-label='Car model'
+                placeholder='Car model'
+                classNamePrefix="car-make"
+                autoFocus={false}
+                maxMenuHeight={210}
+                classNames={{
+                  option: (state) => state.isDisabled ? 'option-car-make--disabled' : ''
+                }}
+              />
+            )}
           />
+          {errors.carModel && <span className="form-help">{errors.carModel.message}</span>}
         </div>
         <div className="constructor-step__field form-field">
-          <Select
-            options={carYearsOptions}
-            onChange={handleYearChange}
-            value={carYear}
-            blurInputOnSelect={true}
-            aria-label='Car year'
-            autoFocus={false}
-            placeholder='Car year'
-            classNamePrefix="car-make"
-            maxMenuHeight={210}
-            required
+          <Controller
+            name="carYear"
+            control={control}
+            rules={{ required: 'Car year is required' }}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={carYearsOptions}
+                blurInputOnSelect={true}
+                aria-label='Car year'
+                autoFocus={false}
+                placeholder='Car year'
+                classNamePrefix="car-make"
+                maxMenuHeight={210}
+              />
+            )}
           />
+          {errors.carYear && <span className="form-help">{errors.carYear.message}</span>}
         </div>
         <button type="submit" className="constructor-step__button button">Next step</button>
       </div>
     </form>
   );
 };
+
 
 export default CarMakeForm;
