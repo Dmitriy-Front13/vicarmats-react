@@ -69,7 +69,7 @@ const GetGift = () => {
     <section className="get-gift section">
       <div className="get-gift__inner">
         <Timer />
-        <h2 className="get-gift__title section__title">Get your gift for summer!!
+        <h2 className="get-gift__title section__title">Get your gift for Fall!!
         </h2>
         <p className="get-gift__text">Buy now our product and get a complimentary heel pad</p>
         <button className="get-gift__button"
