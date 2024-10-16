@@ -22,13 +22,8 @@ import './billingForm.scss';
 const BillingForm = () => {
   const initialOptions = {
     "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
-    "enable-funding": "venmo",
-    "disable-funding": "",
-    "buyer-country": "US",
     currency: "USD",
-    "data-page-type": "product-details",
     components: "buttons",
-    "data-sdk-integration-source": "developer-studio",
   };
   const { register, handleSubmit, formState: { errors } } = useForm();
 
