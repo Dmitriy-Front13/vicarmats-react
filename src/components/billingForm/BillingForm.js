@@ -162,7 +162,7 @@ const BillingForm = () => {
                 purchase_units: [
                   {
                     amount: {
-                      value: price.total.toString(),
+                      value: "1",
                     },
                   },
                 ],
