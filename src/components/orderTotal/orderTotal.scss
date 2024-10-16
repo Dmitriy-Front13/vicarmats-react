@@ -52,7 +52,7 @@
     }
   }
   @media (max-width: 900px) {
-    grid-row: 4;
+    grid-row: 2;
     grid-column: 1;
   }
 
@@ -72,6 +72,9 @@
 
     &__item-price {
       font-size: 16px;
+    }
+    &__item-tax {
+      font-size: 14px;
     }
     &__tooltip {
       font-size: 12px;      

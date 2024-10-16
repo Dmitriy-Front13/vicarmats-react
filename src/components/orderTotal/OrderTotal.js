@@ -20,7 +20,7 @@ const OrderTotal = ({ inCheckout }) => {
   }, [total, dispatch]);
 
   return (
-    <div className={`order-total ${inCheckout ? 'checkout-form__total' : ''}`}>
+    <div className={`order-total ${inCheckout ? 'checkout__total' : ''}`}>
       <h4 className="order-total__title">Order summary</h4>
       <ul className="order-total__items">
         <li className="order-total__item">

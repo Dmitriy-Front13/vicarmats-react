@@ -28,8 +28,7 @@ const useFormSubmit = (url) => {
 
   const showToast = (content) => {
     Toastify({
-      text: typeof content === 'string' ? content : undefined,
-      node: typeof content === 'object' ? content : undefined,
+      text: content,
       duration: 6000,
       close: true,
       gravity: "bottom",
