@@ -1,4 +1,5 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ import securityImg from '../../assets/images/security.jpg';
 const BillingFormPayPal = () => {
   const state = useSelector((state) => state.priceConstructor);
   const { carMake, carModel, carYear, carpetColor, carpetTrim, set, shipping, price, promo } = state;
+  const navigate = useNavigate();
 
   const initialOptions = {
     "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
@@ -44,7 +46,7 @@ const BillingFormPayPal = () => {
       const email = details.payer.email_address; 
       const response = await axios.post('https://eva-tech.ca/action.php', createPayload(email));
       if (response.status === 200) {
-        showToast(`Transaction completed by ${details.payer.name.given_name}`);
+        navigate('/congratulations');
       }
     } catch (error) {
       console.error('Error processing order:', error);
