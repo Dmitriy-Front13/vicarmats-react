@@ -25,3 +25,4 @@ aboutProduct.css
 style.min.css
 index.html
 /server
+.env

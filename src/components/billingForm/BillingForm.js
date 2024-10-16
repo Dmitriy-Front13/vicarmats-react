@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ import OrderSummary from '../orderSummary/OrderSummary';
 import OrderTotal from "../orderTotal/OrderTotal";
 
 import { billingDetailsFields, billingDeliveryFields } from './billingFormConfig';
-
+import { showToast } from '../../utils/showToast';
 import { getCurrentDate } from '../../utils/getCurrentDate';
 import useFormSubmit from '../../hook/useFormSubmit';
 
@@ -20,6 +20,16 @@ import './billingForm.scss';
 
 
 const BillingForm = () => {
+  const initialOptions = {
+    "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+    "enable-funding": "venmo",
+    "disable-funding": "",
+    "buyer-country": "US",
+    currency: "USD",
+    "data-page-type": "product-details",
+    components: "buttons",
+    "data-sdk-integration-source": "developer-studio",
+  };
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const state = useSelector((state) => state.priceConstructor);
@@ -144,7 +154,29 @@ const BillingForm = () => {
         </div>
 
       </div>
-      <button className={`checkout-form__btn ${isLoading ? 'checkout-form__btn--loading' : ''}`} type="submit">{isLoading ? <Spinner /> : 'Place order'}</button>
+   
+        <PayPalScriptProvider options={initialOptions}>
+          <PayPalButtons
+            createOrder={(data, actions) => {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: price.total.toString(),
+                    },
+                  },
+                ],
+              });
+            }}
+            onApprove={(data, actions) => {
+              return actions.order.capture().then((details) => {
+                showToast(`Transaction completed by ${details.payer.name.given_name}`);
+              });
+            }}
+          />
+        </PayPalScriptProvider>
+
+      {/* <button className={`checkout-form__btn ${isLoading ? 'checkout-form__btn--loading' : ''}`} type="submit">{isLoading ? <Spinner /> : 'Place order'}</button> */}
     </form>
   );
 };
