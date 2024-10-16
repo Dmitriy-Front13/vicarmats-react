@@ -1,0 +1,19 @@
+.congratulations {
+  &__title {
+    text-align: center;
+  }
+  &__sub-title {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    text-align: center;
+  }
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+  }
+  &__box {
+    background-color: hsla(240 4.8% 95.9%);
+    padding: 1rem
+  }
+}
