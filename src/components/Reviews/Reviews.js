@@ -23,7 +23,7 @@ const slides = [
 ];
 
 
-const Reviews = () => {
+const Reviews = ({ star }) => {
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {
@@ -38,6 +38,20 @@ const Reviews = () => {
     <section className="reviews">
       <div className="container">
         <h2 className="reviews__title">Reviews</h2>
+        {star && (
+          <div className="reviews__star-box">
+            {[...Array(5)].map((_, i) => (
+              <svg
+                key={i}
+                className="reviews__star"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+              </svg>
+            ))}
+          </div>
+        )}
         <Swiper
           className="reviews__swiper"
           modules={[Navigation]}

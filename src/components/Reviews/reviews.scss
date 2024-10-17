@@ -6,7 +6,20 @@
     font-size: 36px;
     color: #000;
     text-align: center;
-    padding-bottom: 55px;
+    margin-bottom: 10px;
+  }
+
+  &__star-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  &__star {
+    color: rgb(250 204 21);
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
   }
 
   &__item-headline {
@@ -88,6 +101,15 @@
   .reviews {
     padding: 30px 0;
 
+    &__star-box {
+      margin-bottom: 20px;
+    }
+
+    &__star {
+      width: 1rem;
+      height: 1rem;
+    }
+
     &__item-text {
       margin-top: 40px
     }
@@ -144,6 +166,7 @@
     &__inner-user {
       font-size: 16px
     }
+
     &__inner-date {
       font-size: 12px
     }

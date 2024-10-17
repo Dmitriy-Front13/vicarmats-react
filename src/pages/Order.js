@@ -33,8 +33,8 @@ const OrderPage = () => {
           </div>
         </div>
       </section>
-      <Reviews />
-      <FAQ/>
+      <Reviews star={true}/>
+      <FAQ excludeItems={[1, 4, 10, 11, 12]}/>
     </main >
   )
 }
