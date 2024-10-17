@@ -9,13 +9,14 @@ const OrderDelivery = forwardRef((props, ref) => {
   const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
   const isShipping = useSelector((state) => state.priceConstructor.shipping.postalCode);
   const set = useSelector((state) => state.priceConstructor.set);
+  const shippingPrice = useSelector((state) => state.priceConstructor.shipping.shippingPrice);
 
   const calculateShipping = (postalCode, selectedSet) => {
     const cleanedPostalCode = postalCode.toUpperCase().replace(/\s+/g, '');
     const firstTwo = cleanedPostalCode.substring(0, 2);
     let shippingCost;
 
-  
+
     if (['Standart', 'Premium'].includes(selectedSet)) {
       shippingCost = 0;
     } else if (firstTwo === 'K7') {
@@ -65,6 +66,9 @@ const OrderDelivery = forwardRef((props, ref) => {
           },
         })}
       />
+      {shippingPrice === 0 && (
+        <p className="free-shipping">Free delivery applies to postal code {isShipping}</p>
+      )}
       {errors.postalCode && (
         <p className="promoInvalid">{errors.postalCode.message}</p>
       )}
