@@ -88,16 +88,16 @@ const BillingFormPayPal = () => {
       <OrderTotal inCheckout={true} />
       <OrderSummary />
       <div className="checkout__btns">
-        <img className="checkout__security-img" src={securityImg} alt="100% security" />
-        <div>
+        <div className='checkout__terms-box'>
           <input
             type="checkbox"
             id="termsCheckbox"
             checked={isCheckboxChecked}
             onChange={(e) => setIsCheckboxChecked(e.target.checked)}
           />
-          <label htmlFor="termsCheckbox">Я принимаю <Link to='/privacyPolicy'>условия соглашения</Link></label>
+          <label htmlFor="termsCheckbox">I agree to the <Link to='/privacyPolicy'>terms and conditions</Link></label>
         </div>
+        <img className="checkout__security-img" src={securityImg} alt="100% security" />
         <PayPalScriptProvider options={initialOptions}>
           <PayPalButtons
             createOrder={createOrder}
