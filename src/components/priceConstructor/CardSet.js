@@ -13,7 +13,7 @@ const CardSet = ({ discount, title, imageUrl, totalPrice, originalPrice, firstPr
         title: title,
         description: false,
         image: imageUrl,
-        items: [firstProperty, 'Warranty 6 months', 'Sewing time 2-4 days', 'Original fasteners + Velcro system', 'Custom fit for your car. All photos are for example'],
+        items: [firstProperty, 'Warranty 1 year', 'Sewing time 2-4 days', 'Original fasteners + Velcro system', 'Custom fit for your car. All photos are for example'],
         oldPrice: originalPrice,
         price: totalPrice,
         isGift: false,

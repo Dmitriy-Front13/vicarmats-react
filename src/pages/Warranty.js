@@ -10,7 +10,7 @@ const Warranty = () => {
             <div className="warranty__inner">
               <h2 className="warranty__title">Warranty</h2>
               <p className="warranty__desc">
-                At Evatech, we pride ourselves on delivering high-quality products that you can trust. To provide you with peace of mind, we offer a 6-month warranty on all our car mats. This warranty covers defects in materials or workmanship under normal use, which refers to regular conditions of driving and climate, excluding excessive wear from extreme or improper usage.</p>
+                At Evatech, we pride ourselves on delivering high-quality products that you can trust. To provide you with peace of mind, we offer a 1 year warranty on all our car mats. This warranty covers defects in materials or workmanship under normal use, which refers to regular conditions of driving and climate, excluding excessive wear from extreme or improper usage.</p>
               <p className="warranty__desc">
                 If a defect arises within the warranty period, Evatech will replace/repair the product free of charge and
                 cover all associated shipping costs. Please note that any claims made under the warranty must be accompanied

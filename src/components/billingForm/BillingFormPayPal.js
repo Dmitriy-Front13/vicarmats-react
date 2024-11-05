@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -17,6 +17,8 @@ const BillingFormPayPal = () => {
   const state = useSelector((state) => state.priceConstructor);
   const { carMake, carModel, carYear, carpetColor, carpetTrim, set, shipping, price, promo } = state;
   const navigate = useNavigate();
+
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   const initialOptions = {
     "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
@@ -80,16 +82,27 @@ const BillingFormPayPal = () => {
 
     fetchOrderNumber();
   }, []);
+
   return (
     <div className="checkout__wrapper">
       <OrderTotal inCheckout={true} />
       <OrderSummary />
       <div className="checkout__btns">
         <img className="checkout__security-img" src={securityImg} alt="100% security" />
+        <div>
+          <input
+            type="checkbox"
+            id="termsCheckbox"
+            checked={isCheckboxChecked}
+            onChange={(e) => setIsCheckboxChecked(e.target.checked)}
+          />
+          <label htmlFor="termsCheckbox">Я принимаю <Link to='/privacyPolicy'>условия соглашения</Link></label>
+        </div>
         <PayPalScriptProvider options={initialOptions}>
           <PayPalButtons
             createOrder={createOrder}
             onApprove={onApprove}
+            disabled={!isCheckboxChecked}
           />
         </PayPalScriptProvider>
       </div>

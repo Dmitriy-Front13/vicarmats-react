@@ -13,23 +13,23 @@ const SetForm = ({currentStep}) => {
         title="Economy"
         imageUrl={set1}
         totalPrice={59}
-        originalPrice="100"
+        originalPrice={100}
         firstProperty="Front or rear"
       />
       <CardSet
         discount="-15%"
         title="Standart"
         imageUrl={set2}
-        totalPrice={119}
-        originalPrice="140"
+        totalPrice={139}
+        originalPrice={165}
         firstProperty="Front and rear"
       />
       <CardSet
         discount="-10%"
         title="Premium"
         imageUrl={set3}
-        totalPrice={199}
-        originalPrice="220"
+        totalPrice={219}
+        originalPrice={250}
         firstProperty="Front and rear + trunk mat"
       />
     </form>

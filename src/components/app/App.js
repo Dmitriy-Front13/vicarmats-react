@@ -13,6 +13,7 @@ const AboutProductPage = lazy(() => import('../../pages/AboutProduct'));
 const OrderPage = lazy(() => import('../../pages/Order'));
 const CheckoutPage = lazy(() => import('../../pages/Checkout'));
 const CongratulationsPage = lazy(() => import('../../pages/Congratulations'));
+const PrivacyPolicyPage = lazy(() => import('../../pages/PrivacyPolicy'));
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/order' element={<OrderPage/>}/>
           <Route path='/checkout' element={<CheckoutPage/>}/>
           <Route path='/congratulations' element={<CongratulationsPage/>}/>
+          <Route path='/privacyPolicy' element={<PrivacyPolicyPage/>}/>
         </Routes>
       </Suspense>
       <Footer/>

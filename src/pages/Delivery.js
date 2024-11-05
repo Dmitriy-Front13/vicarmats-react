@@ -38,12 +38,12 @@ const Delivery = () => {
               <p className="delivery__desc">At Evatech, we offer flexible and convenient payment options for your order:</p>
               <ul className="delivery__items">
                 <li className="delivery__item-title">
-                  E-Transfer Payment
-                  <p className="delivery__desc">Customers can pay for their orders via e-transfer. Payment should be sent to <b>info@eva-tech.ca</b>, with the order number used as the secret question and "Evatech" as the answer. Orders will only be processed and put into production after payment has been received. Please note that orders unpaid within 3 days will not be processed.</p>
+                  Website Payment Options
+                  <p className="delivery__desc">We now accept <b>PayPal</b> and <b>credit card</b> payments directly on our website, ensuring a secure and seamless checkout process.</p>
                 </li>
                 <li className="delivery__item-title">
-                  Cash Payment
-                  <p className="delivery__desc">We are pleased to offer free delivery within Kingston, Ontario. For other areas, the cost of delivery will be calculated during the order process, based on your location and distance from our production facility.</p>
+                  Alternative Payment Methods
+                  <p className="delivery__desc">If you prefer to pay via <b>e-transfer</b> or <b>cash</b>, please contact our sales department at <b>info@eva-tech.ca</b>. Orders paid via these methods will only be processed after payment has been received. Please note, orders unpaid within 3 days will not be processed.</p>
                 </li>
               </ul>
               <div className="delivery__box">
